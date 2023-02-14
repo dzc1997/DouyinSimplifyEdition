@@ -43,7 +43,7 @@ struct PublishListResponse {
     3: list<Video> VideoList// 用户发布的视频列表
 }
 
-service VideoService {
+service PublishService {
     PublishListResponse PublishList (1: PublishListRequest Req) //获取用户发布作品
     PublishActionResponse PublishAction (1: PublishActionRequest Req)   //视频投稿
 }

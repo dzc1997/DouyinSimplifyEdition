@@ -32,6 +32,6 @@ struct User {
     5: required bool IsFollow// true-已关注，false-未关注
 }
 
-service VideoService {
+service FeedService {
     FeedResponse Feed(1: FeedRequest Req)   //获取视频流
 }
