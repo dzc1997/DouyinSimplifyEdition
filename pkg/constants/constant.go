@@ -28,6 +28,7 @@ const (
 	//jwt
 	SecretKey   = "secret key"
 	IdentiryKey = "id"
+	TokenExpireDuration = time.Hour * 2
 
 	//时间字段格式
 	TimeFormat = "2006-01-02 15:04:05"

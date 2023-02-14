@@ -30,7 +30,7 @@ func NewJWT(SigningKey []byte) *JWT {
 	}
 }
 
-//CreateToken create a new token
+//CreateToken 构建Token
 func (j *JWT) CreateToken(claims CustomClaims) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 	return token.SignedString(j.SigningKey)

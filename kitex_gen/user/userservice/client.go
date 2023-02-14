@@ -3,7 +3,7 @@
 package userservice
 
 import (
-	user "DouyinSimplifyEdition/kitex_gen/user"
+	user "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/user"
 	"context"
 	client "github.com/cloudwego/kitex/client"
 	callopt "github.com/cloudwego/kitex/client/callopt"
