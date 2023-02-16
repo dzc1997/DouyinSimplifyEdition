@@ -72,3 +72,19 @@ func SendFeedResponse(c *gin.Context, err error, videoList interface{}, nextTime
 		NextTime:   nextTime,
 	})
 }
+
+type PublishListResponse struct {
+	StatusCode int32       `json:"status_code"`
+	StatusMsg  string      `json:"status_msg"`
+	VideoList  interface{} `json:"video_list,omitempty"`
+}
+
+
+func SendPublishListResponse(c *gin.Context, err error, videoList interface{}) {
+	Err := errno.ConvertErr(err)
+	c.JSON(http.StatusOK, PublishListResponse{
+		StatusCode: Err.ErrCode,
+		StatusMsg:  Err.ErrMsg,
+		VideoList:  videoList,
+	})
+}

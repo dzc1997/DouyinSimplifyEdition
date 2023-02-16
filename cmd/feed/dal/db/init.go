@@ -26,7 +26,7 @@ func Init() {
 		panic(err)
 	}
 
-	err = DB.AutoMigrate(&VideoRaw{})
+	err = DB.AutoMigrate(&VideoRaw{}, &UserRaw{}, &FavoriteRaw{}, &RelationRaw{})
 	if err != nil {
 		panic(err)
 	}

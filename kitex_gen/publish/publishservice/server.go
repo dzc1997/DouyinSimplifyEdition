@@ -2,8 +2,8 @@
 package publishservice
 
 import (
-	publish "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/publish"
 	server "github.com/cloudwego/kitex/server"
+	publish "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/publish"
 )
 
 // NewServer creates a server.Server with the given handler and options.

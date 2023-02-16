@@ -3,10 +3,10 @@
 package publishservice
 
 import (
-	publish "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/publish"
 	"context"
 	client "github.com/cloudwego/kitex/client"
 	kitex "github.com/cloudwego/kitex/pkg/serviceinfo"
+	publish "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/publish"
 )
 
 func serviceInfo() *kitex.ServiceInfo {

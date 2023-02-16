@@ -859,7 +859,7 @@ func (p *PublishActionRequest) FastRead(buf []byte) (int, error) {
 				}
 			}
 		case 2:
-			if fieldTypeId == thrift.BYTE {
+			if fieldTypeId == thrift.STRING {
 				l, err = p.FastReadField2(buf[offset:])
 				offset += l
 				if err != nil {
@@ -938,12 +938,12 @@ func (p *PublishActionRequest) FastReadField1(buf []byte) (int, error) {
 func (p *PublishActionRequest) FastReadField2(buf []byte) (int, error) {
 	offset := 0
 
-	if v, l, err := bthrift.Binary.ReadByte(buf[offset:]); err != nil {
+	if v, l, err := bthrift.Binary.ReadBinary(buf[offset:]); err != nil {
 		return offset, err
 	} else {
 		offset += l
 
-		p.Data = v
+		p.Data = []byte(v)
 
 	}
 	return offset, nil
@@ -972,8 +972,8 @@ func (p *PublishActionRequest) FastWriteNocopy(buf []byte, binaryWriter bthrift.
 	offset := 0
 	offset += bthrift.Binary.WriteStructBegin(buf[offset:], "PublishActionRequest")
 	if p != nil {
-		offset += p.fastWriteField2(buf[offset:], binaryWriter)
 		offset += p.fastWriteField1(buf[offset:], binaryWriter)
+		offset += p.fastWriteField2(buf[offset:], binaryWriter)
 		offset += p.fastWriteField3(buf[offset:], binaryWriter)
 	}
 	offset += bthrift.Binary.WriteFieldStop(buf[offset:])
@@ -1005,8 +1005,8 @@ func (p *PublishActionRequest) fastWriteField1(buf []byte, binaryWriter bthrift.
 
 func (p *PublishActionRequest) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "Data", thrift.BYTE, 2)
-	offset += bthrift.Binary.WriteByte(buf[offset:], p.Data)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "Data", thrift.STRING, 2)
+	offset += bthrift.Binary.WriteBinaryNocopy(buf[offset:], binaryWriter, []byte(p.Data))
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
 	return offset
@@ -1032,8 +1032,8 @@ func (p *PublishActionRequest) field1Length() int {
 
 func (p *PublishActionRequest) field2Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("Data", thrift.BYTE, 2)
-	l += bthrift.Binary.ByteLength(p.Data)
+	l += bthrift.Binary.FieldBeginLength("Data", thrift.STRING, 2)
+	l += bthrift.Binary.BinaryLengthNocopy([]byte(p.Data))
 
 	l += bthrift.Binary.FieldEndLength()
 	return l

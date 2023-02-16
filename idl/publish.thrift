@@ -22,7 +22,7 @@ struct User {
 //视频投稿
 struct PublishActionRequest {
     1: string Token// 用户鉴权token
-    2: byte Data// 视频数据
+    2: binary Data
     3: string Title// 视频标题
 }
 

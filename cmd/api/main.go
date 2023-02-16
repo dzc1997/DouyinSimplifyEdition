@@ -65,6 +65,11 @@ func main() {
 
 	douyin := r.Group("/douyin")
 	douyin.GET("/feed/", handlers.Feed)
+
+	publish := douyin.Group("/publish")
+	publish.POST("/action/", handlers.PublishAction)
+	publish.GET("/list/", handlers.PublishList)
+
 	user_ := douyin.Group("/user")
 	user_.GET("/", handlers.UserInfo)
 	user_.POST("/register/", handlers.UserRegister)

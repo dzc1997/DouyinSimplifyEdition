@@ -25,15 +25,10 @@ func Init() {
 		panic(err)
 	}
 
-	err = DB.AutoMigrate(&UserRaw{})
-	if err != nil {
-		panic(err)
-	}
-
-	err = DB.AutoMigrate(&RelationRaw{})
-	if err != nil {
-		panic(err)
-	}
+	//err = DB.AutoMigrate(&RelationRaw{})
+	//if err != nil {
+	//	panic(err)
+	//}
 
 	sqlDB, err := DB.DB()
 	if err != nil {

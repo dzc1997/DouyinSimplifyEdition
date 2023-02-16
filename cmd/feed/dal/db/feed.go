@@ -8,7 +8,6 @@ import (
 	"time"
 )
 
-
 type UserRaw struct {
 	gorm.Model
 	Name          string `gorm:"column:name;index:idx_username,unique;type:varchar(32);not null"`
@@ -31,7 +30,6 @@ type FavoriteRaw struct {
 
 type VideoRaw struct {
 	gorm.Model
-	Id            int64     `gorm:"column:user_id;not null;index:idx_userid"`
 	UserId        int64     `gorm:"column:user_id;not null;index:idx_userid"`
 	PlayUrl       string    `gorm:"column:play_url;varchar(128);not null"`
 	CoverUrl      string    `gorm:"column:cover_url;varchar(128);not null"`
