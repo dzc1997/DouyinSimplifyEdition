@@ -258,7 +258,7 @@ func (p *FeedResponse) FastRead(buf []byte) (int, error) {
 				}
 			}
 		case 3:
-			if fieldTypeId == thrift.STRUCT {
+			if fieldTypeId == thrift.LIST {
 				l, err = p.FastReadField3(buf[offset:])
 				offset += l
 				if err != nil {
@@ -350,13 +350,27 @@ func (p *FeedResponse) FastReadField2(buf []byte) (int, error) {
 func (p *FeedResponse) FastReadField3(buf []byte) (int, error) {
 	offset := 0
 
-	tmp := NewVideo()
-	if l, err := tmp.FastRead(buf[offset:]); err != nil {
+	_, size, l, err := bthrift.Binary.ReadListBegin(buf[offset:])
+	offset += l
+	if err != nil {
+		return offset, err
+	}
+	p.VideoList = make([]*Video, 0, size)
+	for i := 0; i < size; i++ {
+		_elem := NewVideo()
+		if l, err := _elem.FastRead(buf[offset:]); err != nil {
+			return offset, err
+		} else {
+			offset += l
+		}
+
+		p.VideoList = append(p.VideoList, _elem)
+	}
+	if l, err := bthrift.Binary.ReadListEnd(buf[offset:]); err != nil {
 		return offset, err
 	} else {
 		offset += l
 	}
-	p.VideoList = tmp
 	return offset, nil
 }
 
@@ -428,8 +442,16 @@ func (p *FeedResponse) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWr
 
 func (p *FeedResponse) fastWriteField3(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "VideoList", thrift.STRUCT, 3)
-	offset += p.VideoList.FastWriteNocopy(buf[offset:], binaryWriter)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "VideoList", thrift.LIST, 3)
+	listBeginOffset := offset
+	offset += bthrift.Binary.ListBeginLength(thrift.STRUCT, 0)
+	var length int
+	for _, v := range p.VideoList {
+		length++
+		offset += v.FastWriteNocopy(buf[offset:], binaryWriter)
+	}
+	bthrift.Binary.WriteListBegin(buf[listBeginOffset:], thrift.STRUCT, length)
+	offset += bthrift.Binary.WriteListEnd(buf[offset:])
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
 	return offset
 }
@@ -467,8 +489,12 @@ func (p *FeedResponse) field2Length() int {
 
 func (p *FeedResponse) field3Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("VideoList", thrift.STRUCT, 3)
-	l += p.VideoList.BLength()
+	l += bthrift.Binary.FieldBeginLength("VideoList", thrift.LIST, 3)
+	l += bthrift.Binary.ListBeginLength(thrift.STRUCT, len(p.VideoList))
+	for _, v := range p.VideoList {
+		l += v.BLength()
+	}
+	l += bthrift.Binary.ListEndLength()
 	l += bthrift.Binary.FieldEndLength()
 	return l
 }

@@ -2,7 +2,7 @@
 package commentservice
 
 import (
-	comment "DouyinSimplifyEdition/kitex_gen/comment"
+	comment "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/comment"
 	server "github.com/cloudwego/kitex/server"
 )
 

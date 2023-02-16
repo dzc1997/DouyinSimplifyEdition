@@ -3,7 +3,7 @@
 package relationservice
 
 import (
-	relation "DouyinSimplifyEdition/kitex_gen/relation"
+	relation "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/relation"
 	"context"
 	client "github.com/cloudwego/kitex/client"
 	callopt "github.com/cloudwego/kitex/client/callopt"

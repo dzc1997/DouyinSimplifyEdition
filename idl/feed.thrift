@@ -9,7 +9,7 @@ struct FeedRequest {
 struct FeedResponse {
     1: i32 StatusCode// 状态码，0-成功，其他值-失败
     2: optional string StatusMsg// 返回状态描述
-    3: Video VideoList// 视频列表
+    3: list<Video> VideoList// 视频列表
     4: optional i64 NextTime// 本次返回的视频中，发布最早的时间，作为下次请求时的latest_time
 }
 

@@ -3,7 +3,7 @@
 package feedservice
 
 import (
-	feed "DouyinSimplifyEdition/kitex_gen/feed"
+	feed "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/feed"
 	server "github.com/cloudwego/kitex/server"
 )
 

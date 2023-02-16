@@ -55,3 +55,20 @@ func SendUserInfoResponse(c *gin.Context, err error, user interface{}) {
 		User:       user,
 	})
 }
+
+type FeedResponse struct {
+	StatusCode int32       `json:"status_code"`
+	StatusMsg  string      `json:"status_msg"`
+	VideoList  interface{} `json:"video_list,omitempty"`
+	NextTime   int64       `json:"next_time,omitempty"`
+}
+
+func SendFeedResponse(c *gin.Context, err error, videoList interface{}, nextTime int64) {
+	Err := errno.ConvertErr(err)
+	c.JSON(http.StatusOK, FeedResponse{
+		StatusCode: Err.ErrCode,
+		StatusMsg:  Err.ErrMsg,
+		VideoList:  videoList,
+		NextTime:   nextTime,
+	})
+}

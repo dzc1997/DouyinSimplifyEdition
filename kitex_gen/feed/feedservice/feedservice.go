@@ -3,8 +3,8 @@
 package feedservice
 
 import (
-	feed "DouyinSimplifyEdition/kitex_gen/feed"
 	"context"
+	feed "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/feed"
 	client "github.com/cloudwego/kitex/client"
 	kitex "github.com/cloudwego/kitex/pkg/serviceinfo"
 )

@@ -3,7 +3,7 @@
 package messageservice
 
 import (
-	message "DouyinSimplifyEdition/kitex_gen/message"
+	message "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/message"
 	"context"
 	client "github.com/cloudwego/kitex/client"
 	callopt "github.com/cloudwego/kitex/client/callopt"

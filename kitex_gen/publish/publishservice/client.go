@@ -3,7 +3,7 @@
 package publishservice
 
 import (
-	publish "DouyinSimplifyEdition/kitex_gen/publish"
+	publish "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/publish"
 	"context"
 	client "github.com/cloudwego/kitex/client"
 	callopt "github.com/cloudwego/kitex/client/callopt"

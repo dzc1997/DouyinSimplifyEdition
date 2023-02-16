@@ -3,7 +3,7 @@
 package favoriteservice
 
 import (
-	favorite "DouyinSimplifyEdition/kitex_gen/favorite"
+	favorite "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/favorite"
 	"context"
 	client "github.com/cloudwego/kitex/client"
 	callopt "github.com/cloudwego/kitex/client/callopt"

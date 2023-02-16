@@ -3,7 +3,7 @@
 package messageservice
 
 import (
-	message "DouyinSimplifyEdition/kitex_gen/message"
+	message "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/message"
 	server "github.com/cloudwego/kitex/server"
 )
 
