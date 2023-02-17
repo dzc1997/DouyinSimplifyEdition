@@ -135,3 +135,19 @@ func SendCommentActionResponse(c *gin.Context, err error, comment interface{}) {
 		Comment:    comment,
 	})
 }
+
+type FavoriteListResponse struct {
+	StatusCode int32       `json:"status_code"`
+	StatusMsg  string      `json:"status_msg"`
+	VideoList  interface{} `json:"video_list,omitempty"`
+}
+
+// SendFavoriteListResponse pack favorite list response
+func SendFavoriteListResponse(c *gin.Context, err error, videoList interface{}) {
+	Err := errno.ConvertErr(err)
+	c.JSON(http.StatusOK, FavoriteListResponse{
+		StatusCode: Err.ErrCode,
+		StatusMsg:  Err.ErrMsg,
+		VideoList:  videoList,
+	})
+}

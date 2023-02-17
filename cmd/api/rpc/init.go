@@ -6,5 +6,6 @@ func InitRPC() {
 	initPublishRpc()
 	initRelationRpc()
 	initCommentRpc()
+	initFavoriteRpc()
 }
 

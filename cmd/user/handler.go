@@ -63,13 +63,13 @@ func (s *UserServiceImpl) UserInfo(ctx context.Context, req *user.UserRequest) (
 		resp = pack.BuildUserInfoResp(errno.ParamErr)
 	}
 
-	user, err := service.NewUserInfoService(ctx).UserInfo(req)
+	user_, err := service.NewUserInfoService(ctx).UserInfo(req)
 	if err != nil {
 		resp = pack.BuildUserInfoResp(err)
 		return
 	}
 
 	resp = pack.BuildUserInfoResp(errno.Success)
-	resp.User = user
+	resp.User = user_
 	return resp, nil
 }
