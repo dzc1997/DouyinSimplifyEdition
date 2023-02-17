@@ -88,3 +88,50 @@ func SendPublishListResponse(c *gin.Context, err error, videoList interface{}) {
 		VideoList:  videoList,
 	})
 }
+
+type RelationListResponse struct {
+	StatusCode int32       `json:"status_code"`
+	StatusMsg  string      `json:"status_msg,omitempty"`
+	UserList   interface{} `json:"user_list,omitempty"`
+}
+
+func SendRelationListResponse(c *gin.Context, err error, userList interface{}) {
+	Err := errno.ConvertErr(err)
+	c.JSON(http.StatusOK, RelationListResponse{
+		StatusCode: Err.ErrCode,
+		StatusMsg:  Err.ErrMsg,
+		UserList:   userList,
+	})
+}
+
+type CommentListResponse struct {
+	StatusCode  int32       `json:"status_code"`
+	StatusMsg   string      `json:"status_msg"`
+	CommentList interface{} `json:"comment_list,omitempty"`
+}
+
+// SendCommentListResponse pack comment list response
+func SendCommentListResponse(c *gin.Context, err error, commentList interface{}) {
+	Err := errno.ConvertErr(err)
+	c.JSON(http.StatusOK, CommentListResponse{
+		StatusCode:  Err.ErrCode,
+		StatusMsg:   Err.ErrMsg,
+		CommentList: commentList,
+	})
+}
+
+type CommentActionResponse struct {
+	StatusCode int32       `json:"status_code"`
+	StatusMsg  string      `json:"status_msg"`
+	Comment    interface{} `json:"comment,omitempty"`
+}
+
+// SendCommentActionResponse pack comment action response
+func SendCommentActionResponse(c *gin.Context, err error, comment interface{}) {
+	Err := errno.ConvertErr(err)
+	c.JSON(http.StatusOK, CommentActionResponse{
+		StatusCode: Err.ErrCode,
+		StatusMsg:  Err.ErrMsg,
+		Comment:    comment,
+	})
+}

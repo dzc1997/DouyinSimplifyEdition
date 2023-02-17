@@ -44,12 +44,12 @@ func UserInfo(c *gin.Context) {
 		return
 	}
 
-	user, err := rpc.UserInfo(context.Background(), &user.UserRequest{
+	user_, err := rpc.UserInfo(context.Background(), &user.UserRequest{
 		UserId: userId,
 		Token:  token,
 	})
 	if err != nil {
 		SendResponse(c, errno.ConvertErr(err))
 	}
-	SendUserInfoResponse(c, errno.Success, user)
+	SendUserInfoResponse(c, errno.Success, user_)
 }

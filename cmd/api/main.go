@@ -75,6 +75,15 @@ func main() {
 	user_.POST("/register/", handlers.UserRegister)
 	user_.POST("/login/", authMiddleware.LoginHandler)
 
+	relation := douyin.Group("/relation")
+	relation.POST("/action/", handlers.RelationAction)
+	relation.GET("/follow/list/", handlers.FollowList)
+	relation.GET("/follower/list/", handlers.FollowerList)
+
+	comment := douyin.Group("/comment")
+	comment.POST("/action/", handlers.CommentAction)
+	comment.GET("/list/", handlers.CommentList)
+
 	if err := http.ListenAndServe(constants.ApiAddress, r); err != nil {
 		klog.Fatal(err)
 	}
