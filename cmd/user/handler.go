@@ -9,7 +9,7 @@ import (
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/jwt"
 )
 
-type UserServiceImpl struct {}
+type UserServiceImpl struct{}
 
 func (s *UserServiceImpl) UserLogin(ctx context.Context, req *user.UserLoginRequest) (resp *user.UserLoginResponse, err error) {
 	resp = new(user.UserLoginResponse)
@@ -24,8 +24,9 @@ func (s *UserServiceImpl) UserLogin(ctx context.Context, req *user.UserLoginRequ
 		resp = pack.BuildUserLoginResp(err)
 		return resp, nil
 	}
-	resp.UserId = uid
+	//之前debug这两句写反了 导致后端获取不到UserId
 	resp = pack.BuildUserLoginResp(errno.Success)
+	resp.UserId = uid
 	return resp, nil
 }
 

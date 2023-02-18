@@ -28,6 +28,7 @@ func (s *LoginUserService) CheckUser(req *user.UserLoginRequest) (int64, error) 
 	passWord := fmt.Sprintf("%x", h.Sum(nil))
 
 	userName := req.Username
+	fmt.Printf("CheckUser got req %+v. passwd md5: %v", req, passWord)
 	users, err := db.QueryUserByName(s.ctx, userName)
 	if err != nil {
 		return 0, err
@@ -36,6 +37,9 @@ func (s *LoginUserService) CheckUser(req *user.UserLoginRequest) (int64, error) 
 		return 0, errno.UserNotExistErr
 	}
 	u := users[0]
+
+	fmt.Printf("CheckUser got user %+v.", u)
+
 	if u.Password != passWord {
 		return 0, errno.LoginErr
 	}

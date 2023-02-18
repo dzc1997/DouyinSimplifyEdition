@@ -1,8 +1,8 @@
 package pack
 
 import (
-	"github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/favorite"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/favorite/dal/db"
+	"github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/favorite"
 )
 
 func VideoList(currentId int64, videoData []*db.VideoRaw, userMap map[int64]*db.UserRaw, favoriteMap map[int64]*db.FavoriteRaw, relationMap map[int64]*db.RelationRaw) []*favorite.Video {

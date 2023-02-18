@@ -3,6 +3,7 @@ package service
 import (
 	"context"
 	"errors"
+	"fmt"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/user/dal/db"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/user/pack"
 	"github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/user"
@@ -28,6 +29,7 @@ func (s *UserInfoService) UserInfo(req *user.UserRequest) (*user.User, error) {
 	}
 
 	userIds := []int64{req.UserId}
+	fmt.Printf("UserInfo got req %+v. currentId %v", req, currentId)
 	users, err := db.QueryUserByIds(s.ctx, userIds)
 	if err != nil {
 		return nil, err
