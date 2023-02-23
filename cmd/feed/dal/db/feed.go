@@ -2,18 +2,25 @@ package db
 
 import (
 	"context"
+	"time"
+
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/constants"
 	"gorm.io/gorm"
-	"time"
 )
 
 type UserRaw struct {
 	gorm.Model
-	Name          string `gorm:"column:name;index:idx_username,unique;type:varchar(32);not null"`
-	Password      string `gorm:"column:password;type:varchar(32);not null"`
-	FollowCount   int64  `gorm:"column:follow_count;default:0"`
-	FollowerCount int64  `gorm:"column:follower_count;default:0"`
+	Name            string `gorm:"column:name;index:idx_username,unique;type:varchar(32);not null"`
+	Password        string `gorm:"column:password;type:varchar(32);not null"`
+	FollowCount     int64  `gorm:"column:follow_count;default:0"`
+	FollowerCount   int64  `gorm:"column:follower_count;default:0"`
+	Avatar          string `gorm:"column:avatar,type:varchar(100);not null"`           // 用户头像
+	BackgroundImage string `gorm:"column:background_image,type:varchar(100);not null"` // 用户个人页顶部大图
+	Signature       string `gorm:"column:signature,type:varchar(1000);not null"`       // 个人简介
+	TotalFavorited  string `gorm:"column:total_favorited;type:varchar(1000);not null"` // 获赞数量
+	WorkCount       int64  `gorm:"column:work_count;default:0"`                        // 作品数量
+	FavoriteCount   int64  `gorm:"column:favorite_count;default:0"`                    // 点赞数量
 }
 
 type RelationRaw struct {
@@ -39,8 +46,20 @@ type VideoRaw struct {
 	UpdatedAt     time.Time `gorm:"column:update_time;not null;index:idx_update"`
 }
 
-func (v *VideoRaw) TableName() string {
+func (VideoRaw) TableName() string {
 	return constants.VideoTableName
+}
+
+func (FavoriteRaw) TableName() string {
+	return constants.FavoriteTableName
+}
+
+func (UserRaw) TableName() string {
+	return constants.UserTableName
+}
+
+func (RelationRaw) TableName() string {
+	return constants.RelationTableName
 }
 
 //QueryVideoByLatestTime query video info by latest create Time

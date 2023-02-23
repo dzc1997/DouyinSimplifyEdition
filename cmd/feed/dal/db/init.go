@@ -4,6 +4,7 @@ import (
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/constants"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 	opentracing "gorm.io/plugin/opentracing"
 )
 
@@ -16,6 +17,7 @@ func Init() {
 		&gorm.Config{
 			PrepareStmt:            true,
 			SkipDefaultTransaction: true,
+			Logger:                 logger.Default.LogMode(logger.Info),
 		},
 	)
 	if err != nil {
@@ -26,7 +28,7 @@ func Init() {
 		panic(err)
 	}
 
-	err = DB.AutoMigrate(&VideoRaw{}, &UserRaw{}, &FavoriteRaw{}, &RelationRaw{})
+	err = DB.AutoMigrate(&VideoRaw{})
 	if err != nil {
 		panic(err)
 	}

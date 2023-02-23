@@ -3,10 +3,10 @@
 package favoriteservice
 
 import (
-	favorite "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/favorite"
 	"context"
 	client "github.com/cloudwego/kitex/client"
 	callopt "github.com/cloudwego/kitex/client/callopt"
+	favorite "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/favorite"
 )
 
 // Client is designed to provide IDL-compatible methods with call-option parameter for kitex framework.

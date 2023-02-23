@@ -23,7 +23,7 @@ const (
 	UserTableName     = "user"
 	FavoriteTableName = "favorite"
 	CommentTableName  = "comment"
-	ReltaionTableName = "relation"
+	RelationTableName = "relation"
 
 	//jwt
 	SecretKey           = "secret key"
@@ -53,12 +53,14 @@ const (
 	RelationServiceName = "relation"
 
 	//Limit
-	CPURateLimit = 80.0
-	DefaultLimit = 10
+	NeedCPURateLimit = false
+	CPURateLimit     = 80.0
+	DefaultLimit     = 10
 
 	//MySQL配置
 	MySQLMaxIdleConns    = 10        //空闲连接池中连接的最大数量
 	MySQLMaxOpenConns    = 100       //打开数据库连接的最大数量
 	MySQLConnMaxLifetime = time.Hour //连接可复用的最大时间
 
+	DefaultAvatar
 )

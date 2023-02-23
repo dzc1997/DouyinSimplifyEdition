@@ -4,9 +4,9 @@ package feedservice
 
 import (
 	"context"
-	feed "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/feed"
 	client "github.com/cloudwego/kitex/client"
 	kitex "github.com/cloudwego/kitex/pkg/serviceinfo"
+	feed "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/feed"
 )
 
 func serviceInfo() *kitex.ServiceInfo {

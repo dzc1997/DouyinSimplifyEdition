@@ -2,19 +2,23 @@ package handlers
 
 import (
 	"context"
+	"strconv"
+	"unicode/utf8"
+
+	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/api/rpc"
 	"github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/comment"
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/constants"
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/errno"
 	"github.com/gin-gonic/gin"
-	"strconv"
-	"unicode/utf8"
 )
 
 func CommentAction(c *gin.Context) {
 	token := c.Query("token")
 	videoIdStr := c.Query("video_id")
 	actionTypeStr := c.Query("action_type")
+
+	klog.Infof("CommentAction token[%v] videoID[%v] action[%v]\n", token, videoIdStr, actionTypeStr)
 
 	videoId, err := strconv.ParseInt(videoIdStr, 10, 64)
 	if err != nil {
@@ -36,7 +40,7 @@ func CommentAction(c *gin.Context) {
 			return
 		}
 
-		req := &comment.CommentActionRequest{Token: token, VideoId: videoId, CommentText: &commentText}
+		req := &comment.CommentActionRequest{Token: token, VideoId: videoId, CommentText: &commentText, ActionType: constants.AddComment}
 		comment_, err := rpc.CommentAction(context.Background(), req)
 		if err != nil {
 			SendResponse(c, errno.ConvertErr(err))
@@ -52,7 +56,7 @@ func CommentAction(c *gin.Context) {
 			SendResponse(c, errno.ParamParseErr)
 		}
 
-		req := &comment.CommentActionRequest{Token: token, VideoId: videoId, CommentId: &commentId}
+		req := &comment.CommentActionRequest{Token: token, VideoId: videoId, CommentId: &commentId, ActionType: constants.DelComment}
 		comment_, err := rpc.CommentAction(context.Background(), req)
 		if err != nil {
 			SendResponse(c, errno.ConvertErr(err))

@@ -1,7 +1,10 @@
 package pack
 
 import (
+	"context"
 	"errors"
+
+	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/user"
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/errno"
 )
@@ -46,6 +49,9 @@ func BuildUserInfoResp(err error) *user.UserResponse {
 	if err == nil {
 		return userInfoResp(errno.Success)
 	}
+
+	klog.CtxInfof(context.TODO(), "BuildUserInfoResp err %v", err)
+
 	e := errno.ErrNo{}
 	if errors.As(err, &e) {
 		return userInfoResp(e)

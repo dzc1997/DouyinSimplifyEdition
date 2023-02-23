@@ -3,12 +3,14 @@ package service
 import (
 	"context"
 	"errors"
+	"sync"
+
+	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/favorite/dal/db"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/favorite/pack"
 	"github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/favorite"
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/constants"
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/jwt"
-	"sync"
 )
 
 type FavoriteListService struct {
@@ -26,20 +28,28 @@ func (s *FavoriteListService) FavoriteList(req *favorite.FavoriteListRequest) ([
 	Jwt := jwt.NewJWT([]byte(constants.SecretKey))
 	currentId, _ := Jwt.CheckToken(req.Token)
 
+	klog.Infof("FavoriteListService FavoriteList req %+v\n", req)
+
 	//检查用户是否存在
 	user, err := db.QueryUserByIds(s.ctx, []int64{req.UserId})
 	if err != nil {
 		return nil, err
 	}
+	klog.Infof("FavoriteListService FavoriteList got user %+v\n", user)
+
 	if len(user) == 0 {
 		return nil, errors.New("user not exist")
 	}
+
+	klog.Infof("FavoriteListService FavoriteList user %+v\n", user)
 
 	//获取目标用户的点赞视频id号
 	videoIds, err := db.QueryFavoriteById(s.ctx, req.UserId)
 	if err != nil {
 		return nil, err
 	}
+
+	klog.Infof("FavoriteListService FavoriteList videoIds %+v\n", videoIds)
 
 	//获取点赞视频的信息
 	videoData, err := db.QueryVideoByVideoIds(s.ctx, videoIds)

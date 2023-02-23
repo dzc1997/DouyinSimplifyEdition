@@ -4,6 +4,12 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"image/jpeg"
+	"os"
+	"strconv"
+	"strings"
+	"time"
+
 	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/disintegration/imaging"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/publish/dal/db"
@@ -12,11 +18,6 @@ import (
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/jwt"
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/oss"
 	ffmpeg "github.com/u2takey/ffmpeg-go"
-	"image/jpeg"
-	"os"
-	"strconv"
-	"strings"
-	"time"
 )
 
 type PublishService struct {
@@ -49,7 +50,7 @@ func (s *PublishService) Publish(req *publish.PublishActionRequest) error {
 	}
 
 	//分片将视频流上传到oss
-	objectKey := "video/" + fileName
+	objectKey := "video-" + fileName
 	err = oss.PublishVideoToOss(objectKey, filePath)
 	if err != nil {
 		return err
@@ -70,7 +71,7 @@ func (s *PublishService) Publish(req *publish.PublishActionRequest) error {
 	}
 
 	//上传封面到oss
-	objectKey = "cover/" + coverName
+	objectKey = "cover-" + coverName
 	coverReader := bytes.NewReader(coverData)
 	err = oss.PublishCoverToOss(objectKey, coverReader)
 	if err != nil {

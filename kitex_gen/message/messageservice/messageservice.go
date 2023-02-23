@@ -3,10 +3,10 @@
 package messageservice
 
 import (
-	message "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/message"
 	"context"
 	client "github.com/cloudwego/kitex/client"
 	kitex "github.com/cloudwego/kitex/pkg/serviceinfo"
+	message "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/message"
 )
 
 func serviceInfo() *kitex.ServiceInfo {

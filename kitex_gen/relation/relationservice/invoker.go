@@ -3,8 +3,8 @@
 package relationservice
 
 import (
-	relation "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/relation"
 	server "github.com/cloudwego/kitex/server"
+	relation "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/relation"
 )
 
 // NewInvoker creates a server.Invoker with the given handler and options.

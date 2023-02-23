@@ -2,11 +2,13 @@ package handlers
 
 import (
 	"context"
+	"strconv"
+
+	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/api/rpc"
 	"github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/user"
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/errno"
 	"github.com/gin-gonic/gin"
-	"strconv"
 )
 
 func UserRegister(c *gin.Context) {
@@ -44,12 +46,17 @@ func UserInfo(c *gin.Context) {
 		return
 	}
 
+	klog.Infof("UserInfo userId[%v] token[%v]\n", userId, token)
+
 	user_, err := rpc.UserInfo(context.Background(), &user.UserRequest{
 		UserId: userId,
 		Token:  token,
 	})
 	if err != nil {
 		SendResponse(c, errno.ConvertErr(err))
+		return
 	}
+
+	klog.Infof("return user_ %+v\n", user_)
 	SendUserInfoResponse(c, errno.Success, user_)
 }

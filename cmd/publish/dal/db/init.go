@@ -4,6 +4,7 @@ import (
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/constants"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 	gormtracing "gorm.io/plugin/opentracing"
 )
 
@@ -15,6 +16,7 @@ func Init() {
 		&gorm.Config{
 			PrepareStmt:            true,
 			SkipDefaultTransaction: true,
+			Logger:                 logger.Default.LogMode(logger.Info),
 		},
 	)
 	if err != nil {
@@ -44,4 +46,3 @@ func Init() {
 	sqlDB.SetConnMaxLifetime(constants.MySQLConnMaxLifetime)
 
 }
-

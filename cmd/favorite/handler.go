@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+
+	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/favorite/pack"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/favorite/service"
 	"github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/favorite"
@@ -32,6 +34,7 @@ func (s *FavoriteServiceImpl) FavoriteAction(ctx context.Context, req *favorite.
 func (s *FavoriteServiceImpl) FavoriteList(ctx context.Context, req *favorite.FavoriteListRequest) (resp *favorite.FavoriteListResponse, err error) {
 	resp = new(favorite.FavoriteListResponse)
 
+	klog.Infof("FavoriteList req %+v\n", req)
 	if req.UserId == 0 {
 		resp = pack.BuildFavoriteListResp(errno.ParamErr)
 		return resp, nil

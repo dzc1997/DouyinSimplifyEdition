@@ -3,10 +3,10 @@
 package favoriteservice
 
 import (
-	favorite "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/favorite"
 	"context"
 	client "github.com/cloudwego/kitex/client"
 	kitex "github.com/cloudwego/kitex/pkg/serviceinfo"
+	favorite "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/favorite"
 )
 
 func serviceInfo() *kitex.ServiceInfo {

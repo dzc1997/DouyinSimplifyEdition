@@ -3,10 +3,10 @@
 package userservice
 
 import (
-	user "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/user"
 	"context"
 	client "github.com/cloudwego/kitex/client"
 	kitex "github.com/cloudwego/kitex/pkg/serviceinfo"
+	user "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/user"
 )
 
 func serviceInfo() *kitex.ServiceInfo {

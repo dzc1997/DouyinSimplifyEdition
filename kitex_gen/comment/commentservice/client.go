@@ -3,10 +3,10 @@
 package commentservice
 
 import (
-	comment "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/comment"
 	"context"
 	client "github.com/cloudwego/kitex/client"
 	callopt "github.com/cloudwego/kitex/client/callopt"
+	comment "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/comment"
 )
 
 // Client is designed to provide IDL-compatible methods with call-option parameter for kitex framework.

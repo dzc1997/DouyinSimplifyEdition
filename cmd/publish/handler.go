@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+
+	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/publish/pack"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/publish/service"
 	"github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/publish"
@@ -18,6 +20,8 @@ func (s *PublishServiceImpl) PublishAction(ctx context.Context, req *publish.Pub
 		resp = pack.BuildPublishActionResp(errno.ParamErr)
 		return resp, nil
 	}
+
+	klog.Infof("PublishAction token[%v] title[%v] datalen[%v]", req.Token, req.Title, len(req.Data))
 
 	err = service.NewPublishService(ctx).Publish(req)
 	if err != nil {
@@ -46,4 +50,3 @@ func (s *PublishServiceImpl) PublishList(ctx context.Context, req *publish.Publi
 	resp.VideoList = videoList
 	return resp, nil
 }
-

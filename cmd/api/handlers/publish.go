@@ -3,17 +3,22 @@ package handlers
 import (
 	"bytes"
 	"context"
+	"encoding/json"
+	"io"
+	"strconv"
+
+	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/api/rpc"
 	"github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/publish"
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/errno"
 	"github.com/gin-gonic/gin"
-	"io"
-	"strconv"
 )
 
 func PublishAction(c *gin.Context) {
 	title := c.PostForm("title")
 	token := c.PostForm("token")
+
+	klog.Infof("PublishAction title[%v] token[%v]\n", title, token)
 
 	data, _, err := c.Request.FormFile("data")
 	if err != nil {
@@ -55,7 +60,10 @@ func PublishList(c *gin.Context) {
 	userId, err := strconv.ParseInt(userIdStr, 10, 64)
 	if err != nil {
 		SendResponse(c, errno.ParamParseErr)
+		return
 	}
+
+	klog.Infof("QueryVideoList req userID[%v] token[%v]", userIdStr, token)
 
 	videoList, err := rpc.QueryVideoList(context.Background(), &publish.PublishListRequest{
 		Token:  token,
@@ -66,6 +74,12 @@ func PublishList(c *gin.Context) {
 		return
 	}
 
+	klog.Infof("QueryVideoList got videoList len[%v]", len(videoList))
+
+	if len(videoList) > 0 {
+		marshal, _ := json.Marshal(videoList)
+		klog.Infof("QueryVideoList got videoList [%s]", string(marshal))
+	}
+
 	SendPublishListResponse(c, errno.Success, videoList)
 }
-

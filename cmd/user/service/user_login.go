@@ -4,10 +4,12 @@ import (
 	"context"
 	"crypto/md5"
 	"fmt"
+	"io"
+
+	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/user/dal/db"
 	"github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/user"
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/errno"
-	"io"
 )
 
 type LoginUserService struct {
@@ -28,7 +30,7 @@ func (s *LoginUserService) CheckUser(req *user.UserLoginRequest) (int64, error) 
 	passWord := fmt.Sprintf("%x", h.Sum(nil))
 
 	userName := req.Username
-	fmt.Printf("CheckUser got req %+v. passwd md5: %v", req, passWord)
+	klog.Infof( "CheckUser got req %+v. passwd md5: %v\n", req, passWord)
 	users, err := db.QueryUserByName(s.ctx, userName)
 	if err != nil {
 		return 0, err
@@ -38,7 +40,7 @@ func (s *LoginUserService) CheckUser(req *user.UserLoginRequest) (int64, error) 
 	}
 	u := users[0]
 
-	fmt.Printf("CheckUser got user %+v.", u)
+	klog.CtxInfof(context.TODO(), "CheckUser got user %+v.", u)
 
 	if u.Password != passWord {
 		return 0, errno.LoginErr

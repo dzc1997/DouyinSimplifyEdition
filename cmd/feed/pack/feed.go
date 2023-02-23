@@ -1,9 +1,10 @@
 package pack
 
 import (
+	"time"
+
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/feed/dal/db"
 	"github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/feed"
-	"time"
 )
 
 func VideoInfo(currentId int64, videoData []*db.VideoRaw, userMap map[int64]*db.UserRaw, favoriteMap map[int64]*db.FavoriteRaw, relationMap map[int64]*db.RelationRaw) ([]*feed.Video, int64) {
@@ -12,11 +13,7 @@ func VideoInfo(currentId int64, videoData []*db.VideoRaw, userMap map[int64]*db.
 	for _, video := range videoData {
 		videoUser, ok := userMap[video.UserId]
 		if !ok {
-			videoUser = &db.UserRaw{
-				Name:          "未知用户",
-				FollowCount:   0,
-				FollowerCount: 0,
-			}
+			videoUser = &db.UserRaw{}
 			videoUser.ID = 0
 		}
 
@@ -33,14 +30,26 @@ func VideoInfo(currentId int64, videoData []*db.VideoRaw, userMap map[int64]*db.
 				isFollow = true
 			}
 		}
+
+		if len(videoUser.Name) == 0 {
+			videoUser.Name = "未知用户"
+		}
+
+		if len(videoUser.Signature) == 0 {
+			videoUser.Signature = "这个用户很懒, 什么都没写"
+		}
+
 		videoList = append(videoList, &feed.Video{
 			Id: int64(video.ID),
 			Author: &feed.User{
-				Id:            int64(videoUser.ID),
-				Name:          videoUser.Name,
-				FollowCount:   &videoUser.FollowCount,
-				FollowerCount: &videoUser.FollowerCount,
-				IsFollow:      isFollow,
+				Id:              int64(videoUser.ID),
+				Name:            videoUser.Name,
+				FollowCount:     &videoUser.FollowCount,
+				FollowerCount:   &videoUser.FollowerCount,
+				IsFollow:        isFollow,
+				Avatar:          &videoUser.Avatar,
+				BackgroundImage: &videoUser.BackgroundImage,
+				Signature:       &videoUser.Signature,
 			},
 			PlayUrl:       video.PlayUrl,
 			CoverUrl:      video.CoverUrl,

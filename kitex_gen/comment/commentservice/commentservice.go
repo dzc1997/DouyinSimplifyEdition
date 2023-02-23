@@ -3,10 +3,10 @@
 package commentservice
 
 import (
-	comment "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/comment"
 	"context"
 	client "github.com/cloudwego/kitex/client"
 	kitex "github.com/cloudwego/kitex/pkg/serviceinfo"
+	comment "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/comment"
 )
 
 func serviceInfo() *kitex.ServiceInfo {

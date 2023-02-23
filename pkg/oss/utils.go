@@ -2,9 +2,10 @@ package oss
 
 import (
 	"bytes"
+	"os"
+
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
 	"github.com/cloudwego/kitex/pkg/klog"
-	"os"
 )
 
 // PublishVideoToPublic 将视频保存到本地文件夹中
@@ -60,5 +61,7 @@ func QueryOssCoverURL(objectKey string) (string, error) {
 		klog.Errorf("Query %v Cover URL fail, %v", objectKey, err.Error())
 		return "", err
 	}
+
+	klog.Infof("QueryOssCoverURL objectKey %v signedURL %v\n", objectKey, signedURL)
 	return signedURL, nil
 }

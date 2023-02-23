@@ -197,7 +197,7 @@ func (p *RelationActionRequest) BLength() int {
 
 func (p *RelationActionRequest) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "Token", thrift.STRING, 1)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "token", thrift.STRING, 1)
 	offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, p.Token)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -206,7 +206,7 @@ func (p *RelationActionRequest) fastWriteField1(buf []byte, binaryWriter bthrift
 
 func (p *RelationActionRequest) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "ToUserId", thrift.I64, 2)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "to_user_id", thrift.I64, 2)
 	offset += bthrift.Binary.WriteI64(buf[offset:], p.ToUserId)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -215,7 +215,7 @@ func (p *RelationActionRequest) fastWriteField2(buf []byte, binaryWriter bthrift
 
 func (p *RelationActionRequest) fastWriteField3(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "ActionType", thrift.I32, 3)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "action_type", thrift.I32, 3)
 	offset += bthrift.Binary.WriteI32(buf[offset:], p.ActionType)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -224,7 +224,7 @@ func (p *RelationActionRequest) fastWriteField3(buf []byte, binaryWriter bthrift
 
 func (p *RelationActionRequest) field1Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("Token", thrift.STRING, 1)
+	l += bthrift.Binary.FieldBeginLength("token", thrift.STRING, 1)
 	l += bthrift.Binary.StringLengthNocopy(p.Token)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -233,7 +233,7 @@ func (p *RelationActionRequest) field1Length() int {
 
 func (p *RelationActionRequest) field2Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("ToUserId", thrift.I64, 2)
+	l += bthrift.Binary.FieldBeginLength("to_user_id", thrift.I64, 2)
 	l += bthrift.Binary.I64Length(p.ToUserId)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -242,7 +242,7 @@ func (p *RelationActionRequest) field2Length() int {
 
 func (p *RelationActionRequest) field3Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("ActionType", thrift.I32, 3)
+	l += bthrift.Binary.FieldBeginLength("action_type", thrift.I32, 3)
 	l += bthrift.Binary.I32Length(p.ActionType)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -392,7 +392,7 @@ func (p *RelationActionResponse) BLength() int {
 
 func (p *RelationActionResponse) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "StatusCode", thrift.I32, 1)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "status_code", thrift.I32, 1)
 	offset += bthrift.Binary.WriteI32(buf[offset:], p.StatusCode)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -402,7 +402,7 @@ func (p *RelationActionResponse) fastWriteField1(buf []byte, binaryWriter bthrif
 func (p *RelationActionResponse) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
 	if p.IsSetStatusMsg() {
-		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "StatusMsg", thrift.STRING, 2)
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "status_msg", thrift.STRING, 2)
 		offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, *p.StatusMsg)
 
 		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -412,7 +412,7 @@ func (p *RelationActionResponse) fastWriteField2(buf []byte, binaryWriter bthrif
 
 func (p *RelationActionResponse) field1Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("StatusCode", thrift.I32, 1)
+	l += bthrift.Binary.FieldBeginLength("status_code", thrift.I32, 1)
 	l += bthrift.Binary.I32Length(p.StatusCode)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -422,7 +422,7 @@ func (p *RelationActionResponse) field1Length() int {
 func (p *RelationActionResponse) field2Length() int {
 	l := 0
 	if p.IsSetStatusMsg() {
-		l += bthrift.Binary.FieldBeginLength("StatusMsg", thrift.STRING, 2)
+		l += bthrift.Binary.FieldBeginLength("status_msg", thrift.STRING, 2)
 		l += bthrift.Binary.StringLengthNocopy(*p.StatusMsg)
 
 		l += bthrift.Binary.FieldEndLength()
@@ -574,7 +574,7 @@ func (p *RelationFollowListRequest) BLength() int {
 
 func (p *RelationFollowListRequest) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "UserId", thrift.I64, 1)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "user_id", thrift.I64, 1)
 	offset += bthrift.Binary.WriteI64(buf[offset:], p.UserId)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -583,7 +583,7 @@ func (p *RelationFollowListRequest) fastWriteField1(buf []byte, binaryWriter bth
 
 func (p *RelationFollowListRequest) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "Token", thrift.STRING, 2)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "token", thrift.STRING, 2)
 	offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, p.Token)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -592,7 +592,7 @@ func (p *RelationFollowListRequest) fastWriteField2(buf []byte, binaryWriter bth
 
 func (p *RelationFollowListRequest) field1Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("UserId", thrift.I64, 1)
+	l += bthrift.Binary.FieldBeginLength("user_id", thrift.I64, 1)
 	l += bthrift.Binary.I64Length(p.UserId)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -601,7 +601,7 @@ func (p *RelationFollowListRequest) field1Length() int {
 
 func (p *RelationFollowListRequest) field2Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("Token", thrift.STRING, 2)
+	l += bthrift.Binary.FieldBeginLength("token", thrift.STRING, 2)
 	l += bthrift.Binary.StringLengthNocopy(p.Token)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -794,7 +794,7 @@ func (p *RelationFollowListResponse) BLength() int {
 
 func (p *RelationFollowListResponse) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "StatusCode", thrift.I32, 1)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "status_code", thrift.I32, 1)
 	offset += bthrift.Binary.WriteI32(buf[offset:], p.StatusCode)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -804,7 +804,7 @@ func (p *RelationFollowListResponse) fastWriteField1(buf []byte, binaryWriter bt
 func (p *RelationFollowListResponse) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
 	if p.IsSetStatusMsg() {
-		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "StatusMsg", thrift.STRING, 2)
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "status_msg", thrift.STRING, 2)
 		offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, *p.StatusMsg)
 
 		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -814,7 +814,7 @@ func (p *RelationFollowListResponse) fastWriteField2(buf []byte, binaryWriter bt
 
 func (p *RelationFollowListResponse) fastWriteField3(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "UserList", thrift.LIST, 3)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "user_list", thrift.LIST, 3)
 	listBeginOffset := offset
 	offset += bthrift.Binary.ListBeginLength(thrift.STRUCT, 0)
 	var length int
@@ -830,7 +830,7 @@ func (p *RelationFollowListResponse) fastWriteField3(buf []byte, binaryWriter bt
 
 func (p *RelationFollowListResponse) field1Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("StatusCode", thrift.I32, 1)
+	l += bthrift.Binary.FieldBeginLength("status_code", thrift.I32, 1)
 	l += bthrift.Binary.I32Length(p.StatusCode)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -840,7 +840,7 @@ func (p *RelationFollowListResponse) field1Length() int {
 func (p *RelationFollowListResponse) field2Length() int {
 	l := 0
 	if p.IsSetStatusMsg() {
-		l += bthrift.Binary.FieldBeginLength("StatusMsg", thrift.STRING, 2)
+		l += bthrift.Binary.FieldBeginLength("status_msg", thrift.STRING, 2)
 		l += bthrift.Binary.StringLengthNocopy(*p.StatusMsg)
 
 		l += bthrift.Binary.FieldEndLength()
@@ -850,7 +850,7 @@ func (p *RelationFollowListResponse) field2Length() int {
 
 func (p *RelationFollowListResponse) field3Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("UserList", thrift.LIST, 3)
+	l += bthrift.Binary.FieldBeginLength("user_list", thrift.LIST, 3)
 	l += bthrift.Binary.ListBeginLength(thrift.STRUCT, len(p.UserList))
 	for _, v := range p.UserList {
 		l += v.BLength()
@@ -941,6 +941,90 @@ func (p *User) FastRead(buf []byte) (int, error) {
 		case 5:
 			if fieldTypeId == thrift.BOOL {
 				l, err = p.FastReadField5(buf[offset:])
+				offset += l
+				if err != nil {
+					goto ReadFieldError
+				}
+			} else {
+				l, err = bthrift.Binary.Skip(buf[offset:], fieldTypeId)
+				offset += l
+				if err != nil {
+					goto SkipFieldError
+				}
+			}
+		case 6:
+			if fieldTypeId == thrift.STRING {
+				l, err = p.FastReadField6(buf[offset:])
+				offset += l
+				if err != nil {
+					goto ReadFieldError
+				}
+			} else {
+				l, err = bthrift.Binary.Skip(buf[offset:], fieldTypeId)
+				offset += l
+				if err != nil {
+					goto SkipFieldError
+				}
+			}
+		case 7:
+			if fieldTypeId == thrift.STRING {
+				l, err = p.FastReadField7(buf[offset:])
+				offset += l
+				if err != nil {
+					goto ReadFieldError
+				}
+			} else {
+				l, err = bthrift.Binary.Skip(buf[offset:], fieldTypeId)
+				offset += l
+				if err != nil {
+					goto SkipFieldError
+				}
+			}
+		case 8:
+			if fieldTypeId == thrift.STRING {
+				l, err = p.FastReadField8(buf[offset:])
+				offset += l
+				if err != nil {
+					goto ReadFieldError
+				}
+			} else {
+				l, err = bthrift.Binary.Skip(buf[offset:], fieldTypeId)
+				offset += l
+				if err != nil {
+					goto SkipFieldError
+				}
+			}
+		case 9:
+			if fieldTypeId == thrift.STRING {
+				l, err = p.FastReadField9(buf[offset:])
+				offset += l
+				if err != nil {
+					goto ReadFieldError
+				}
+			} else {
+				l, err = bthrift.Binary.Skip(buf[offset:], fieldTypeId)
+				offset += l
+				if err != nil {
+					goto SkipFieldError
+				}
+			}
+		case 10:
+			if fieldTypeId == thrift.I64 {
+				l, err = p.FastReadField10(buf[offset:])
+				offset += l
+				if err != nil {
+					goto ReadFieldError
+				}
+			} else {
+				l, err = bthrift.Binary.Skip(buf[offset:], fieldTypeId)
+				offset += l
+				if err != nil {
+					goto SkipFieldError
+				}
+			}
+		case 11:
+			if fieldTypeId == thrift.I64 {
+				l, err = p.FastReadField11(buf[offset:])
 				offset += l
 				if err != nil {
 					goto ReadFieldError
@@ -1055,6 +1139,84 @@ func (p *User) FastReadField5(buf []byte) (int, error) {
 	return offset, nil
 }
 
+func (p *User) FastReadField6(buf []byte) (int, error) {
+	offset := 0
+
+	if v, l, err := bthrift.Binary.ReadString(buf[offset:]); err != nil {
+		return offset, err
+	} else {
+		offset += l
+		p.Avatar = &v
+
+	}
+	return offset, nil
+}
+
+func (p *User) FastReadField7(buf []byte) (int, error) {
+	offset := 0
+
+	if v, l, err := bthrift.Binary.ReadString(buf[offset:]); err != nil {
+		return offset, err
+	} else {
+		offset += l
+		p.BackgroundImage = &v
+
+	}
+	return offset, nil
+}
+
+func (p *User) FastReadField8(buf []byte) (int, error) {
+	offset := 0
+
+	if v, l, err := bthrift.Binary.ReadString(buf[offset:]); err != nil {
+		return offset, err
+	} else {
+		offset += l
+		p.Signature = &v
+
+	}
+	return offset, nil
+}
+
+func (p *User) FastReadField9(buf []byte) (int, error) {
+	offset := 0
+
+	if v, l, err := bthrift.Binary.ReadString(buf[offset:]); err != nil {
+		return offset, err
+	} else {
+		offset += l
+		p.TotalFavorited = &v
+
+	}
+	return offset, nil
+}
+
+func (p *User) FastReadField10(buf []byte) (int, error) {
+	offset := 0
+
+	if v, l, err := bthrift.Binary.ReadI64(buf[offset:]); err != nil {
+		return offset, err
+	} else {
+		offset += l
+		p.WorkCount = &v
+
+	}
+	return offset, nil
+}
+
+func (p *User) FastReadField11(buf []byte) (int, error) {
+	offset := 0
+
+	if v, l, err := bthrift.Binary.ReadI64(buf[offset:]); err != nil {
+		return offset, err
+	} else {
+		offset += l
+		p.FavoriteCount = &v
+
+	}
+	return offset, nil
+}
+
 // for compatibility
 func (p *User) FastWrite(buf []byte) int {
 	return 0
@@ -1068,7 +1230,13 @@ func (p *User) FastWriteNocopy(buf []byte, binaryWriter bthrift.BinaryWriter) in
 		offset += p.fastWriteField3(buf[offset:], binaryWriter)
 		offset += p.fastWriteField4(buf[offset:], binaryWriter)
 		offset += p.fastWriteField5(buf[offset:], binaryWriter)
+		offset += p.fastWriteField10(buf[offset:], binaryWriter)
+		offset += p.fastWriteField11(buf[offset:], binaryWriter)
 		offset += p.fastWriteField2(buf[offset:], binaryWriter)
+		offset += p.fastWriteField6(buf[offset:], binaryWriter)
+		offset += p.fastWriteField7(buf[offset:], binaryWriter)
+		offset += p.fastWriteField8(buf[offset:], binaryWriter)
+		offset += p.fastWriteField9(buf[offset:], binaryWriter)
 	}
 	offset += bthrift.Binary.WriteFieldStop(buf[offset:])
 	offset += bthrift.Binary.WriteStructEnd(buf[offset:])
@@ -1084,6 +1252,12 @@ func (p *User) BLength() int {
 		l += p.field3Length()
 		l += p.field4Length()
 		l += p.field5Length()
+		l += p.field6Length()
+		l += p.field7Length()
+		l += p.field8Length()
+		l += p.field9Length()
+		l += p.field10Length()
+		l += p.field11Length()
 	}
 	l += bthrift.Binary.FieldStopLength()
 	l += bthrift.Binary.StructEndLength()
@@ -1092,7 +1266,7 @@ func (p *User) BLength() int {
 
 func (p *User) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "Id", thrift.I64, 1)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "id", thrift.I64, 1)
 	offset += bthrift.Binary.WriteI64(buf[offset:], p.Id)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -1101,7 +1275,7 @@ func (p *User) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWriter) in
 
 func (p *User) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "Name", thrift.STRING, 2)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "name", thrift.STRING, 2)
 	offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, p.Name)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -1111,7 +1285,7 @@ func (p *User) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter) in
 func (p *User) fastWriteField3(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
 	if p.IsSetFollowCount() {
-		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "FollowCount", thrift.I64, 3)
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "follow_count", thrift.I64, 3)
 		offset += bthrift.Binary.WriteI64(buf[offset:], *p.FollowCount)
 
 		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -1122,7 +1296,7 @@ func (p *User) fastWriteField3(buf []byte, binaryWriter bthrift.BinaryWriter) in
 func (p *User) fastWriteField4(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
 	if p.IsSetFollowerCount() {
-		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "FollowerCount", thrift.I64, 4)
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "follower_count", thrift.I64, 4)
 		offset += bthrift.Binary.WriteI64(buf[offset:], *p.FollowerCount)
 
 		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -1132,16 +1306,82 @@ func (p *User) fastWriteField4(buf []byte, binaryWriter bthrift.BinaryWriter) in
 
 func (p *User) fastWriteField5(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "IsFollow", thrift.BOOL, 5)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "is_follow", thrift.BOOL, 5)
 	offset += bthrift.Binary.WriteBool(buf[offset:], p.IsFollow)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
 	return offset
 }
 
+func (p *User) fastWriteField6(buf []byte, binaryWriter bthrift.BinaryWriter) int {
+	offset := 0
+	if p.IsSetAvatar() {
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "avatar", thrift.STRING, 6)
+		offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, *p.Avatar)
+
+		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
+	}
+	return offset
+}
+
+func (p *User) fastWriteField7(buf []byte, binaryWriter bthrift.BinaryWriter) int {
+	offset := 0
+	if p.IsSetBackgroundImage() {
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "background_image", thrift.STRING, 7)
+		offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, *p.BackgroundImage)
+
+		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
+	}
+	return offset
+}
+
+func (p *User) fastWriteField8(buf []byte, binaryWriter bthrift.BinaryWriter) int {
+	offset := 0
+	if p.IsSetSignature() {
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "signature", thrift.STRING, 8)
+		offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, *p.Signature)
+
+		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
+	}
+	return offset
+}
+
+func (p *User) fastWriteField9(buf []byte, binaryWriter bthrift.BinaryWriter) int {
+	offset := 0
+	if p.IsSetTotalFavorited() {
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "total_favorited", thrift.STRING, 9)
+		offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, *p.TotalFavorited)
+
+		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
+	}
+	return offset
+}
+
+func (p *User) fastWriteField10(buf []byte, binaryWriter bthrift.BinaryWriter) int {
+	offset := 0
+	if p.IsSetWorkCount() {
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "work_count", thrift.I64, 10)
+		offset += bthrift.Binary.WriteI64(buf[offset:], *p.WorkCount)
+
+		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
+	}
+	return offset
+}
+
+func (p *User) fastWriteField11(buf []byte, binaryWriter bthrift.BinaryWriter) int {
+	offset := 0
+	if p.IsSetFavoriteCount() {
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "favorite_count", thrift.I64, 11)
+		offset += bthrift.Binary.WriteI64(buf[offset:], *p.FavoriteCount)
+
+		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
+	}
+	return offset
+}
+
 func (p *User) field1Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("Id", thrift.I64, 1)
+	l += bthrift.Binary.FieldBeginLength("id", thrift.I64, 1)
 	l += bthrift.Binary.I64Length(p.Id)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -1150,7 +1390,7 @@ func (p *User) field1Length() int {
 
 func (p *User) field2Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("Name", thrift.STRING, 2)
+	l += bthrift.Binary.FieldBeginLength("name", thrift.STRING, 2)
 	l += bthrift.Binary.StringLengthNocopy(p.Name)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -1160,7 +1400,7 @@ func (p *User) field2Length() int {
 func (p *User) field3Length() int {
 	l := 0
 	if p.IsSetFollowCount() {
-		l += bthrift.Binary.FieldBeginLength("FollowCount", thrift.I64, 3)
+		l += bthrift.Binary.FieldBeginLength("follow_count", thrift.I64, 3)
 		l += bthrift.Binary.I64Length(*p.FollowCount)
 
 		l += bthrift.Binary.FieldEndLength()
@@ -1171,7 +1411,7 @@ func (p *User) field3Length() int {
 func (p *User) field4Length() int {
 	l := 0
 	if p.IsSetFollowerCount() {
-		l += bthrift.Binary.FieldBeginLength("FollowerCount", thrift.I64, 4)
+		l += bthrift.Binary.FieldBeginLength("follower_count", thrift.I64, 4)
 		l += bthrift.Binary.I64Length(*p.FollowerCount)
 
 		l += bthrift.Binary.FieldEndLength()
@@ -1181,10 +1421,76 @@ func (p *User) field4Length() int {
 
 func (p *User) field5Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("IsFollow", thrift.BOOL, 5)
+	l += bthrift.Binary.FieldBeginLength("is_follow", thrift.BOOL, 5)
 	l += bthrift.Binary.BoolLength(p.IsFollow)
 
 	l += bthrift.Binary.FieldEndLength()
+	return l
+}
+
+func (p *User) field6Length() int {
+	l := 0
+	if p.IsSetAvatar() {
+		l += bthrift.Binary.FieldBeginLength("avatar", thrift.STRING, 6)
+		l += bthrift.Binary.StringLengthNocopy(*p.Avatar)
+
+		l += bthrift.Binary.FieldEndLength()
+	}
+	return l
+}
+
+func (p *User) field7Length() int {
+	l := 0
+	if p.IsSetBackgroundImage() {
+		l += bthrift.Binary.FieldBeginLength("background_image", thrift.STRING, 7)
+		l += bthrift.Binary.StringLengthNocopy(*p.BackgroundImage)
+
+		l += bthrift.Binary.FieldEndLength()
+	}
+	return l
+}
+
+func (p *User) field8Length() int {
+	l := 0
+	if p.IsSetSignature() {
+		l += bthrift.Binary.FieldBeginLength("signature", thrift.STRING, 8)
+		l += bthrift.Binary.StringLengthNocopy(*p.Signature)
+
+		l += bthrift.Binary.FieldEndLength()
+	}
+	return l
+}
+
+func (p *User) field9Length() int {
+	l := 0
+	if p.IsSetTotalFavorited() {
+		l += bthrift.Binary.FieldBeginLength("total_favorited", thrift.STRING, 9)
+		l += bthrift.Binary.StringLengthNocopy(*p.TotalFavorited)
+
+		l += bthrift.Binary.FieldEndLength()
+	}
+	return l
+}
+
+func (p *User) field10Length() int {
+	l := 0
+	if p.IsSetWorkCount() {
+		l += bthrift.Binary.FieldBeginLength("work_count", thrift.I64, 10)
+		l += bthrift.Binary.I64Length(*p.WorkCount)
+
+		l += bthrift.Binary.FieldEndLength()
+	}
+	return l
+}
+
+func (p *User) field11Length() int {
+	l := 0
+	if p.IsSetFavoriteCount() {
+		l += bthrift.Binary.FieldBeginLength("favorite_count", thrift.I64, 11)
+		l += bthrift.Binary.I64Length(*p.FavoriteCount)
+
+		l += bthrift.Binary.FieldEndLength()
+	}
 	return l
 }
 
@@ -1332,7 +1638,7 @@ func (p *RelationFollowerListRequest) BLength() int {
 
 func (p *RelationFollowerListRequest) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "UserId", thrift.I64, 1)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "user_id", thrift.I64, 1)
 	offset += bthrift.Binary.WriteI64(buf[offset:], p.UserId)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -1341,7 +1647,7 @@ func (p *RelationFollowerListRequest) fastWriteField1(buf []byte, binaryWriter b
 
 func (p *RelationFollowerListRequest) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "Token", thrift.STRING, 2)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "token", thrift.STRING, 2)
 	offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, p.Token)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -1350,7 +1656,7 @@ func (p *RelationFollowerListRequest) fastWriteField2(buf []byte, binaryWriter b
 
 func (p *RelationFollowerListRequest) field1Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("UserId", thrift.I64, 1)
+	l += bthrift.Binary.FieldBeginLength("user_id", thrift.I64, 1)
 	l += bthrift.Binary.I64Length(p.UserId)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -1359,7 +1665,7 @@ func (p *RelationFollowerListRequest) field1Length() int {
 
 func (p *RelationFollowerListRequest) field2Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("Token", thrift.STRING, 2)
+	l += bthrift.Binary.FieldBeginLength("token", thrift.STRING, 2)
 	l += bthrift.Binary.StringLengthNocopy(p.Token)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -1552,7 +1858,7 @@ func (p *RelationFollowerListResponse) BLength() int {
 
 func (p *RelationFollowerListResponse) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "StatusCode", thrift.I32, 1)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "status_code", thrift.I32, 1)
 	offset += bthrift.Binary.WriteI32(buf[offset:], p.StatusCode)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -1562,7 +1868,7 @@ func (p *RelationFollowerListResponse) fastWriteField1(buf []byte, binaryWriter 
 func (p *RelationFollowerListResponse) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
 	if p.IsSetStatusMsg() {
-		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "StatusMsg", thrift.STRING, 2)
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "status_msg", thrift.STRING, 2)
 		offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, *p.StatusMsg)
 
 		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -1572,7 +1878,7 @@ func (p *RelationFollowerListResponse) fastWriteField2(buf []byte, binaryWriter 
 
 func (p *RelationFollowerListResponse) fastWriteField3(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "UserList", thrift.LIST, 3)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "user_list", thrift.LIST, 3)
 	listBeginOffset := offset
 	offset += bthrift.Binary.ListBeginLength(thrift.STRUCT, 0)
 	var length int
@@ -1588,7 +1894,7 @@ func (p *RelationFollowerListResponse) fastWriteField3(buf []byte, binaryWriter 
 
 func (p *RelationFollowerListResponse) field1Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("StatusCode", thrift.I32, 1)
+	l += bthrift.Binary.FieldBeginLength("status_code", thrift.I32, 1)
 	l += bthrift.Binary.I32Length(p.StatusCode)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -1598,7 +1904,7 @@ func (p *RelationFollowerListResponse) field1Length() int {
 func (p *RelationFollowerListResponse) field2Length() int {
 	l := 0
 	if p.IsSetStatusMsg() {
-		l += bthrift.Binary.FieldBeginLength("StatusMsg", thrift.STRING, 2)
+		l += bthrift.Binary.FieldBeginLength("status_msg", thrift.STRING, 2)
 		l += bthrift.Binary.StringLengthNocopy(*p.StatusMsg)
 
 		l += bthrift.Binary.FieldEndLength()
@@ -1608,7 +1914,7 @@ func (p *RelationFollowerListResponse) field2Length() int {
 
 func (p *RelationFollowerListResponse) field3Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("UserList", thrift.LIST, 3)
+	l += bthrift.Binary.FieldBeginLength("user_list", thrift.LIST, 3)
 	l += bthrift.Binary.ListBeginLength(thrift.STRUCT, len(p.UserList))
 	for _, v := range p.UserList {
 		l += v.BLength()
@@ -1762,7 +2068,7 @@ func (p *RelationFriendListRequest) BLength() int {
 
 func (p *RelationFriendListRequest) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "UserId", thrift.I64, 1)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "user_id", thrift.I64, 1)
 	offset += bthrift.Binary.WriteI64(buf[offset:], p.UserId)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -1771,7 +2077,7 @@ func (p *RelationFriendListRequest) fastWriteField1(buf []byte, binaryWriter bth
 
 func (p *RelationFriendListRequest) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "Token", thrift.STRING, 2)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "token", thrift.STRING, 2)
 	offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, p.Token)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -1780,7 +2086,7 @@ func (p *RelationFriendListRequest) fastWriteField2(buf []byte, binaryWriter bth
 
 func (p *RelationFriendListRequest) field1Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("UserId", thrift.I64, 1)
+	l += bthrift.Binary.FieldBeginLength("user_id", thrift.I64, 1)
 	l += bthrift.Binary.I64Length(p.UserId)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -1789,7 +2095,7 @@ func (p *RelationFriendListRequest) field1Length() int {
 
 func (p *RelationFriendListRequest) field2Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("Token", thrift.STRING, 2)
+	l += bthrift.Binary.FieldBeginLength("token", thrift.STRING, 2)
 	l += bthrift.Binary.StringLengthNocopy(p.Token)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -1982,7 +2288,7 @@ func (p *RelationFriendListResponse) BLength() int {
 
 func (p *RelationFriendListResponse) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "StatusCode", thrift.I32, 1)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "status_code", thrift.I32, 1)
 	offset += bthrift.Binary.WriteI32(buf[offset:], p.StatusCode)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -1992,7 +2298,7 @@ func (p *RelationFriendListResponse) fastWriteField1(buf []byte, binaryWriter bt
 func (p *RelationFriendListResponse) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
 	if p.IsSetStatusMsg() {
-		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "StatusMsg", thrift.STRING, 2)
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "status_msg", thrift.STRING, 2)
 		offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, *p.StatusMsg)
 
 		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -2002,7 +2308,7 @@ func (p *RelationFriendListResponse) fastWriteField2(buf []byte, binaryWriter bt
 
 func (p *RelationFriendListResponse) fastWriteField3(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "UserList", thrift.LIST, 3)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "user_list", thrift.LIST, 3)
 	listBeginOffset := offset
 	offset += bthrift.Binary.ListBeginLength(thrift.STRUCT, 0)
 	var length int
@@ -2018,7 +2324,7 @@ func (p *RelationFriendListResponse) fastWriteField3(buf []byte, binaryWriter bt
 
 func (p *RelationFriendListResponse) field1Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("StatusCode", thrift.I32, 1)
+	l += bthrift.Binary.FieldBeginLength("status_code", thrift.I32, 1)
 	l += bthrift.Binary.I32Length(p.StatusCode)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -2028,7 +2334,7 @@ func (p *RelationFriendListResponse) field1Length() int {
 func (p *RelationFriendListResponse) field2Length() int {
 	l := 0
 	if p.IsSetStatusMsg() {
-		l += bthrift.Binary.FieldBeginLength("StatusMsg", thrift.STRING, 2)
+		l += bthrift.Binary.FieldBeginLength("status_msg", thrift.STRING, 2)
 		l += bthrift.Binary.StringLengthNocopy(*p.StatusMsg)
 
 		l += bthrift.Binary.FieldEndLength()
@@ -2038,7 +2344,7 @@ func (p *RelationFriendListResponse) field2Length() int {
 
 func (p *RelationFriendListResponse) field3Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("UserList", thrift.LIST, 3)
+	l += bthrift.Binary.FieldBeginLength("user_list", thrift.LIST, 3)
 	l += bthrift.Binary.ListBeginLength(thrift.STRUCT, len(p.UserList))
 	for _, v := range p.UserList {
 		l += v.BLength()
@@ -2141,7 +2447,7 @@ func (p *FriendUser) FastRead(buf []byte) (int, error) {
 				}
 			}
 		case 6:
-			if fieldTypeId == thrift.STRING {
+			if fieldTypeId == thrift.BOOL {
 				l, err = p.FastReadField6(buf[offset:])
 				offset += l
 				if err != nil {
@@ -2169,8 +2475,78 @@ func (p *FriendUser) FastRead(buf []byte) (int, error) {
 				}
 			}
 		case 8:
-			if fieldTypeId == thrift.I64 {
+			if fieldTypeId == thrift.STRING {
 				l, err = p.FastReadField8(buf[offset:])
+				offset += l
+				if err != nil {
+					goto ReadFieldError
+				}
+			} else {
+				l, err = bthrift.Binary.Skip(buf[offset:], fieldTypeId)
+				offset += l
+				if err != nil {
+					goto SkipFieldError
+				}
+			}
+		case 9:
+			if fieldTypeId == thrift.I64 {
+				l, err = p.FastReadField9(buf[offset:])
+				offset += l
+				if err != nil {
+					goto ReadFieldError
+				}
+			} else {
+				l, err = bthrift.Binary.Skip(buf[offset:], fieldTypeId)
+				offset += l
+				if err != nil {
+					goto SkipFieldError
+				}
+			}
+		case 10:
+			if fieldTypeId == thrift.I64 {
+				l, err = p.FastReadField10(buf[offset:])
+				offset += l
+				if err != nil {
+					goto ReadFieldError
+				}
+			} else {
+				l, err = bthrift.Binary.Skip(buf[offset:], fieldTypeId)
+				offset += l
+				if err != nil {
+					goto SkipFieldError
+				}
+			}
+		case 11:
+			if fieldTypeId == thrift.I64 {
+				l, err = p.FastReadField11(buf[offset:])
+				offset += l
+				if err != nil {
+					goto ReadFieldError
+				}
+			} else {
+				l, err = bthrift.Binary.Skip(buf[offset:], fieldTypeId)
+				offset += l
+				if err != nil {
+					goto SkipFieldError
+				}
+			}
+		case 12:
+			if fieldTypeId == thrift.STRING {
+				l, err = p.FastReadField12(buf[offset:])
+				offset += l
+				if err != nil {
+					goto ReadFieldError
+				}
+			} else {
+				l, err = bthrift.Binary.Skip(buf[offset:], fieldTypeId)
+				offset += l
+				if err != nil {
+					goto SkipFieldError
+				}
+			}
+		case 13:
+			if fieldTypeId == thrift.I64 {
+				l, err = p.FastReadField13(buf[offset:])
 				offset += l
 				if err != nil {
 					goto ReadFieldError
@@ -2288,12 +2664,11 @@ func (p *FriendUser) FastReadField5(buf []byte) (int, error) {
 func (p *FriendUser) FastReadField6(buf []byte) (int, error) {
 	offset := 0
 
-	if v, l, err := bthrift.Binary.ReadString(buf[offset:]); err != nil {
+	if v, l, err := bthrift.Binary.ReadBool(buf[offset:]); err != nil {
 		return offset, err
 	} else {
 		offset += l
-
-		p.Avatar = v
+		p.Avatar = &v
 
 	}
 	return offset, nil
@@ -2306,13 +2681,78 @@ func (p *FriendUser) FastReadField7(buf []byte) (int, error) {
 		return offset, err
 	} else {
 		offset += l
-		p.Message = &v
+		p.BackgroundImage = &v
 
 	}
 	return offset, nil
 }
 
 func (p *FriendUser) FastReadField8(buf []byte) (int, error) {
+	offset := 0
+
+	if v, l, err := bthrift.Binary.ReadString(buf[offset:]); err != nil {
+		return offset, err
+	} else {
+		offset += l
+		p.Signature = &v
+
+	}
+	return offset, nil
+}
+
+func (p *FriendUser) FastReadField9(buf []byte) (int, error) {
+	offset := 0
+
+	if v, l, err := bthrift.Binary.ReadI64(buf[offset:]); err != nil {
+		return offset, err
+	} else {
+		offset += l
+		p.TotalFavorited = &v
+
+	}
+	return offset, nil
+}
+
+func (p *FriendUser) FastReadField10(buf []byte) (int, error) {
+	offset := 0
+
+	if v, l, err := bthrift.Binary.ReadI64(buf[offset:]); err != nil {
+		return offset, err
+	} else {
+		offset += l
+		p.WorkCount = &v
+
+	}
+	return offset, nil
+}
+
+func (p *FriendUser) FastReadField11(buf []byte) (int, error) {
+	offset := 0
+
+	if v, l, err := bthrift.Binary.ReadI64(buf[offset:]); err != nil {
+		return offset, err
+	} else {
+		offset += l
+		p.FavoriteCount = &v
+
+	}
+	return offset, nil
+}
+
+func (p *FriendUser) FastReadField12(buf []byte) (int, error) {
+	offset := 0
+
+	if v, l, err := bthrift.Binary.ReadString(buf[offset:]); err != nil {
+		return offset, err
+	} else {
+		offset += l
+		p.Message = &v
+
+	}
+	return offset, nil
+}
+
+func (p *FriendUser) FastReadField13(buf []byte) (int, error) {
 	offset := 0
 
 	if v, l, err := bthrift.Binary.ReadI64(buf[offset:]); err != nil {
@@ -2339,10 +2779,15 @@ func (p *FriendUser) FastWriteNocopy(buf []byte, binaryWriter bthrift.BinaryWrit
 		offset += p.fastWriteField3(buf[offset:], binaryWriter)
 		offset += p.fastWriteField4(buf[offset:], binaryWriter)
 		offset += p.fastWriteField5(buf[offset:], binaryWriter)
-		offset += p.fastWriteField8(buf[offset:], binaryWriter)
-		offset += p.fastWriteField2(buf[offset:], binaryWriter)
 		offset += p.fastWriteField6(buf[offset:], binaryWriter)
+		offset += p.fastWriteField9(buf[offset:], binaryWriter)
+		offset += p.fastWriteField10(buf[offset:], binaryWriter)
+		offset += p.fastWriteField11(buf[offset:], binaryWriter)
+		offset += p.fastWriteField13(buf[offset:], binaryWriter)
+		offset += p.fastWriteField2(buf[offset:], binaryWriter)
 		offset += p.fastWriteField7(buf[offset:], binaryWriter)
+		offset += p.fastWriteField8(buf[offset:], binaryWriter)
+		offset += p.fastWriteField12(buf[offset:], binaryWriter)
 	}
 	offset += bthrift.Binary.WriteFieldStop(buf[offset:])
 	offset += bthrift.Binary.WriteStructEnd(buf[offset:])
@@ -2361,6 +2806,11 @@ func (p *FriendUser) BLength() int {
 		l += p.field6Length()
 		l += p.field7Length()
 		l += p.field8Length()
+		l += p.field9Length()
+		l += p.field10Length()
+		l += p.field11Length()
+		l += p.field12Length()
+		l += p.field13Length()
 	}
 	l += bthrift.Binary.FieldStopLength()
 	l += bthrift.Binary.StructEndLength()
@@ -2369,7 +2819,7 @@ func (p *FriendUser) BLength() int {
 
 func (p *FriendUser) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "Id", thrift.I64, 1)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "id", thrift.I64, 1)
 	offset += bthrift.Binary.WriteI64(buf[offset:], p.Id)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -2378,7 +2828,7 @@ func (p *FriendUser) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWrit
 
 func (p *FriendUser) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "Name", thrift.STRING, 2)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "name", thrift.STRING, 2)
 	offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, p.Name)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -2388,7 +2838,7 @@ func (p *FriendUser) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWrit
 func (p *FriendUser) fastWriteField3(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
 	if p.IsSetFollowCount() {
-		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "FollowCount", thrift.I64, 3)
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "follow_count", thrift.I64, 3)
 		offset += bthrift.Binary.WriteI64(buf[offset:], *p.FollowCount)
 
 		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -2399,7 +2849,7 @@ func (p *FriendUser) fastWriteField3(buf []byte, binaryWriter bthrift.BinaryWrit
 func (p *FriendUser) fastWriteField4(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
 	if p.IsSetFollowerCount() {
-		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "FollowerCount", thrift.I64, 4)
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "follower_count", thrift.I64, 4)
 		offset += bthrift.Binary.WriteI64(buf[offset:], *p.FollowerCount)
 
 		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -2409,7 +2859,7 @@ func (p *FriendUser) fastWriteField4(buf []byte, binaryWriter bthrift.BinaryWrit
 
 func (p *FriendUser) fastWriteField5(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "IsFollow", thrift.BOOL, 5)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "is_follow", thrift.BOOL, 5)
 	offset += bthrift.Binary.WriteBool(buf[offset:], p.IsFollow)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -2418,18 +2868,20 @@ func (p *FriendUser) fastWriteField5(buf []byte, binaryWriter bthrift.BinaryWrit
 
 func (p *FriendUser) fastWriteField6(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "Avatar", thrift.STRING, 6)
-	offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, p.Avatar)
+	if p.IsSetAvatar() {
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "avatar", thrift.BOOL, 6)
+		offset += bthrift.Binary.WriteBool(buf[offset:], *p.Avatar)
 
-	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
+		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
+	}
 	return offset
 }
 
 func (p *FriendUser) fastWriteField7(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	if p.IsSetMessage() {
-		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "Message", thrift.STRING, 7)
-		offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, *p.Message)
+	if p.IsSetBackgroundImage() {
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "background_image", thrift.STRING, 7)
+		offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, *p.BackgroundImage)
 
 		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
 	}
@@ -2438,7 +2890,62 @@ func (p *FriendUser) fastWriteField7(buf []byte, binaryWriter bthrift.BinaryWrit
 
 func (p *FriendUser) fastWriteField8(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "MsgType", thrift.I64, 8)
+	if p.IsSetSignature() {
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "signature", thrift.STRING, 8)
+		offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, *p.Signature)
+
+		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
+	}
+	return offset
+}
+
+func (p *FriendUser) fastWriteField9(buf []byte, binaryWriter bthrift.BinaryWriter) int {
+	offset := 0
+	if p.IsSetTotalFavorited() {
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "total_favorited", thrift.I64, 9)
+		offset += bthrift.Binary.WriteI64(buf[offset:], *p.TotalFavorited)
+
+		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
+	}
+	return offset
+}
+
+func (p *FriendUser) fastWriteField10(buf []byte, binaryWriter bthrift.BinaryWriter) int {
+	offset := 0
+	if p.IsSetWorkCount() {
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "work_count", thrift.I64, 10)
+		offset += bthrift.Binary.WriteI64(buf[offset:], *p.WorkCount)
+
+		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
+	}
+	return offset
+}
+
+func (p *FriendUser) fastWriteField11(buf []byte, binaryWriter bthrift.BinaryWriter) int {
+	offset := 0
+	if p.IsSetFavoriteCount() {
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "favorite_count", thrift.I64, 11)
+		offset += bthrift.Binary.WriteI64(buf[offset:], *p.FavoriteCount)
+
+		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
+	}
+	return offset
+}
+
+func (p *FriendUser) fastWriteField12(buf []byte, binaryWriter bthrift.BinaryWriter) int {
+	offset := 0
+	if p.IsSetMessage() {
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "message", thrift.STRING, 12)
+		offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, *p.Message)
+
+		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
+	}
+	return offset
+}
+
+func (p *FriendUser) fastWriteField13(buf []byte, binaryWriter bthrift.BinaryWriter) int {
+	offset := 0
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "msg_type", thrift.I64, 13)
 	offset += bthrift.Binary.WriteI64(buf[offset:], p.MsgType)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -2447,7 +2954,7 @@ func (p *FriendUser) fastWriteField8(buf []byte, binaryWriter bthrift.BinaryWrit
 
 func (p *FriendUser) field1Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("Id", thrift.I64, 1)
+	l += bthrift.Binary.FieldBeginLength("id", thrift.I64, 1)
 	l += bthrift.Binary.I64Length(p.Id)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -2456,7 +2963,7 @@ func (p *FriendUser) field1Length() int {
 
 func (p *FriendUser) field2Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("Name", thrift.STRING, 2)
+	l += bthrift.Binary.FieldBeginLength("name", thrift.STRING, 2)
 	l += bthrift.Binary.StringLengthNocopy(p.Name)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -2466,7 +2973,7 @@ func (p *FriendUser) field2Length() int {
 func (p *FriendUser) field3Length() int {
 	l := 0
 	if p.IsSetFollowCount() {
-		l += bthrift.Binary.FieldBeginLength("FollowCount", thrift.I64, 3)
+		l += bthrift.Binary.FieldBeginLength("follow_count", thrift.I64, 3)
 		l += bthrift.Binary.I64Length(*p.FollowCount)
 
 		l += bthrift.Binary.FieldEndLength()
@@ -2477,7 +2984,7 @@ func (p *FriendUser) field3Length() int {
 func (p *FriendUser) field4Length() int {
 	l := 0
 	if p.IsSetFollowerCount() {
-		l += bthrift.Binary.FieldBeginLength("FollowerCount", thrift.I64, 4)
+		l += bthrift.Binary.FieldBeginLength("follower_count", thrift.I64, 4)
 		l += bthrift.Binary.I64Length(*p.FollowerCount)
 
 		l += bthrift.Binary.FieldEndLength()
@@ -2487,7 +2994,7 @@ func (p *FriendUser) field4Length() int {
 
 func (p *FriendUser) field5Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("IsFollow", thrift.BOOL, 5)
+	l += bthrift.Binary.FieldBeginLength("is_follow", thrift.BOOL, 5)
 	l += bthrift.Binary.BoolLength(p.IsFollow)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -2496,18 +3003,20 @@ func (p *FriendUser) field5Length() int {
 
 func (p *FriendUser) field6Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("Avatar", thrift.STRING, 6)
-	l += bthrift.Binary.StringLengthNocopy(p.Avatar)
+	if p.IsSetAvatar() {
+		l += bthrift.Binary.FieldBeginLength("avatar", thrift.BOOL, 6)
+		l += bthrift.Binary.BoolLength(*p.Avatar)
 
-	l += bthrift.Binary.FieldEndLength()
+		l += bthrift.Binary.FieldEndLength()
+	}
 	return l
 }
 
 func (p *FriendUser) field7Length() int {
 	l := 0
-	if p.IsSetMessage() {
-		l += bthrift.Binary.FieldBeginLength("Message", thrift.STRING, 7)
-		l += bthrift.Binary.StringLengthNocopy(*p.Message)
+	if p.IsSetBackgroundImage() {
+		l += bthrift.Binary.FieldBeginLength("background_image", thrift.STRING, 7)
+		l += bthrift.Binary.StringLengthNocopy(*p.BackgroundImage)
 
 		l += bthrift.Binary.FieldEndLength()
 	}
@@ -2516,7 +3025,62 @@ func (p *FriendUser) field7Length() int {
 
 func (p *FriendUser) field8Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("MsgType", thrift.I64, 8)
+	if p.IsSetSignature() {
+		l += bthrift.Binary.FieldBeginLength("signature", thrift.STRING, 8)
+		l += bthrift.Binary.StringLengthNocopy(*p.Signature)
+
+		l += bthrift.Binary.FieldEndLength()
+	}
+	return l
+}
+
+func (p *FriendUser) field9Length() int {
+	l := 0
+	if p.IsSetTotalFavorited() {
+		l += bthrift.Binary.FieldBeginLength("total_favorited", thrift.I64, 9)
+		l += bthrift.Binary.I64Length(*p.TotalFavorited)
+
+		l += bthrift.Binary.FieldEndLength()
+	}
+	return l
+}
+
+func (p *FriendUser) field10Length() int {
+	l := 0
+	if p.IsSetWorkCount() {
+		l += bthrift.Binary.FieldBeginLength("work_count", thrift.I64, 10)
+		l += bthrift.Binary.I64Length(*p.WorkCount)
+
+		l += bthrift.Binary.FieldEndLength()
+	}
+	return l
+}
+
+func (p *FriendUser) field11Length() int {
+	l := 0
+	if p.IsSetFavoriteCount() {
+		l += bthrift.Binary.FieldBeginLength("favorite_count", thrift.I64, 11)
+		l += bthrift.Binary.I64Length(*p.FavoriteCount)
+
+		l += bthrift.Binary.FieldEndLength()
+	}
+	return l
+}
+
+func (p *FriendUser) field12Length() int {
+	l := 0
+	if p.IsSetMessage() {
+		l += bthrift.Binary.FieldBeginLength("message", thrift.STRING, 12)
+		l += bthrift.Binary.StringLengthNocopy(*p.Message)
+
+		l += bthrift.Binary.FieldEndLength()
+	}
+	return l
+}
+
+func (p *FriendUser) field13Length() int {
+	l := 0
+	l += bthrift.Binary.FieldBeginLength("msg_type", thrift.I64, 13)
 	l += bthrift.Binary.I64Length(p.MsgType)
 
 	l += bthrift.Binary.FieldEndLength()

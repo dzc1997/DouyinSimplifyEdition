@@ -2,6 +2,8 @@ package rpc
 
 import (
 	"context"
+	"time"
+
 	"github.com/cloudwego/kitex/client"
 	"github.com/cloudwego/kitex/pkg/retry"
 	"github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/publish"
@@ -11,7 +13,6 @@ import (
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/middleware"
 	etcd "github.com/kitex-contrib/registry-etcd"
 	trace "github.com/kitex-contrib/tracer-opentracing"
-	"time"
 )
 
 var publishClient publishservice.Client
@@ -61,4 +62,3 @@ func QueryVideoList(ctx context.Context, req *publish.PublishListRequest) ([]*pu
 	}
 	return resp.VideoList, nil
 }
-

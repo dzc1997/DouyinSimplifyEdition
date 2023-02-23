@@ -1,9 +1,10 @@
 package handlers
 
 import (
+	"net/http"
+
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/errno"
 	"github.com/gin-gonic/gin"
-	"net/http"
 )
 
 type UserLogin struct {
@@ -79,9 +80,9 @@ type PublishListResponse struct {
 	VideoList  interface{} `json:"video_list,omitempty"`
 }
 
-
 func SendPublishListResponse(c *gin.Context, err error, videoList interface{}) {
 	Err := errno.ConvertErr(err)
+
 	c.JSON(http.StatusOK, PublishListResponse{
 		StatusCode: Err.ErrCode,
 		StatusMsg:  Err.ErrMsg,

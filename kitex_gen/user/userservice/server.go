@@ -2,8 +2,8 @@
 package userservice
 
 import (
-	user "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/user"
 	server "github.com/cloudwego/kitex/server"
+	user "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/user"
 )
 
 // NewServer creates a server.Server with the given handler and options.

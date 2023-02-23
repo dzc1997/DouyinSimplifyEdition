@@ -3,12 +3,14 @@ package service
 import (
 	"context"
 	"errors"
+	"sync"
+
+	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/publish/dal/db"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/publish/pack"
 	"github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/publish"
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/constants"
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/jwt"
-	"sync"
 )
 
 type PublishListService struct {
@@ -24,6 +26,8 @@ func NewPublishListService(ctx context.Context) *PublishListService {
 func (s *PublishListService) PublishList(req *publish.PublishListRequest) ([]*publish.Video, error) {
 	Jwt := jwt.NewJWT([]byte(constants.SecretKey))
 	currentId, _ := Jwt.CheckToken(req.Token)
+
+	klog.Infof("PublishList %+v\n", req)
 
 	videoData, err := db.QueryVideoByUserId(s.ctx, req.UserId)
 	if err != nil {

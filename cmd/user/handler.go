@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+
+	"github.com/cloudwego/kitex/pkg/klog"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/user/pack"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/user/service"
 	"github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/user"
@@ -24,7 +26,6 @@ func (s *UserServiceImpl) UserLogin(ctx context.Context, req *user.UserLoginRequ
 		resp = pack.BuildUserLoginResp(err)
 		return resp, nil
 	}
-	//之前debug这两句写反了 导致后端获取不到UserId
 	resp = pack.BuildUserLoginResp(errno.Success)
 	resp.UserId = uid
 	return resp, nil
@@ -35,6 +36,7 @@ func (s *UserServiceImpl) UserRegister(ctx context.Context, req *user.UserRegist
 
 	if len(req.Username) == 0 || len(req.Password) == 0 {
 		resp = pack.BuildUserRegisterResp(errno.ParamErr)
+		return
 	}
 
 	userId, err := service.NewRegisterUserService(ctx).RegisterUser(req)
@@ -60,8 +62,11 @@ func (s *UserServiceImpl) UserRegister(ctx context.Context, req *user.UserRegist
 func (s *UserServiceImpl) UserInfo(ctx context.Context, req *user.UserRequest) (resp *user.UserResponse, err error) {
 	resp = new(user.UserResponse)
 
+	klog.CtxInfof(ctx, "UserInfo req %+v\n", req)
+
 	if req.UserId == 0 {
 		resp = pack.BuildUserInfoResp(errno.ParamErr)
+		return
 	}
 
 	user_, err := service.NewUserInfoService(ctx).UserInfo(req)
