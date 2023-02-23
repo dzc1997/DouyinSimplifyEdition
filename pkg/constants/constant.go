@@ -14,8 +14,8 @@ const (
 	CommentAddress     = "127.0.0.1:8085"                                                                        //Comment服务地址
 	RelationAddress    = "127.0.0.1:8086"                                                                        //Relation服务地址
 	OssEndPoint        = "oss-cn-hangzhou.aliyuncs.com"                                                          //Oss
-	OssAccessKeyId     = "LTAI5t8HQjxzMFRRAoZk3kBW"
-	OssAccessKeySecret = "d4IF8KFlPJipNHydPoEnqiwf5xJ7t1"
+	OssAccessKeyId     = ""
+	OssAccessKeySecret = ""
 	OssBucket          = "dynn"
 
 	//数据库表名
