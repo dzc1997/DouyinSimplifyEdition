@@ -34,12 +34,17 @@ func (s *CommentServiceImpl) CommentList(ctx context.Context, req *comment.Comme
 func (s *CommentServiceImpl) CommentAction(ctx context.Context, req *comment.CommentActionRequest) (resp *comment.CommentActionResponse, err error) {
 	resp = new(comment.CommentActionResponse)
 
-	if len(req.Token) == 0 || req.VideoId == 0 || utf8.RuneCountInString(*req.CommentText) > 20 {
+	if len(req.Token) == 0 || req.VideoId == 0 {
 		resp = pack.BuildCommentActionResp(errno.ParamErr)
 		return resp, nil
 	}
 
 	if req.CommentId != nil && *req.CommentId == 0 {
+		resp = pack.BuildCommentActionResp(errno.ParamErr)
+		return resp, nil
+	}
+
+	if req.CommentText != nil && utf8.RuneCountInString(*req.CommentText) > 20 {
 		resp = pack.BuildCommentActionResp(errno.ParamErr)
 		return resp, nil
 	}

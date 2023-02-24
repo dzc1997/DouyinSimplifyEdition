@@ -32,24 +32,24 @@ func PublishInfo(currentId int64, videoData []*db.VideoRaw, userMap map[int64]*d
 			videoUser.Name = "未知用户"
 		}
 
-		if len(videoUser.Signature) == 0 {
-			videoUser.Signature = "这个用户很懒, 什么都没写"
-		}
+		//if len(videoUser.Signature) == 0 {
+		// videoUser.Signature = "这个用户很懒, 什么都没写"
+		//}
 
 		videoList = append(videoList, &publish.Video{
 			Id: int64(video.ID),
 			Author: &publish.User{
-				Id:              int64(videoUser.ID),
-				Name:            videoUser.Name,
-				FollowCount:     &videoUser.FollowCount,
-				FollowerCount:   &videoUser.FollowerCount,
-				IsFollow:        isFollow,
-				Avatar:          &videoUser.Avatar,
-				BackgroundImage: &videoUser.BackgroundImage,
-				Signature:       &videoUser.Signature,
-				TotalFavorited:  &videoUser.TotalFavorited,
-				WorkCount:       &videoUser.WorkCount,
-				FavoriteCount:   &videoUser.FavoriteCount,
+				Id:            int64(videoUser.ID),
+				Name:          videoUser.Name,
+				FollowCount:   &videoUser.FollowCount,
+				FollowerCount: &videoUser.FollowerCount,
+				IsFollow:      isFollow,
+				//Avatar:          &videoUser.Avatar,
+				//BackgroundImage: &videoUser.BackgroundImage,
+				//Signature:       &videoUser.Signature,
+				//TotalFavorited:  &videoUser.TotalFavorited,
+				//WorkCount:       &videoUser.WorkCount,
+				//FavoriteCount:   &videoUser.FavoriteCount,
 			},
 			PlayUrl:       video.PlayUrl,
 			CoverUrl:      video.CoverUrl,

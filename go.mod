@@ -7,6 +7,7 @@ require (
 	github.com/apache/thrift v0.13.0
 	github.com/appleboy/gin-jwt/v2 v2.9.1
 	github.com/cloudwego/kitex v0.4.4
+	github.com/disintegration/imaging v1.6.2
 	github.com/gin-gonic/gin v1.8.2
 	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/kitex-contrib/registry-etcd v0.1.0
@@ -71,6 +72,7 @@ require (
 	go.uber.org/zap v1.17.0 // indirect
 	golang.org/x/arch v0.0.0-20220722155209-00200b7164a7 // indirect
 	golang.org/x/crypto v0.4.0 // indirect
+	golang.org/x/image v0.0.0-20191009234506-e7c1f5e7dbb8 // indirect
 	golang.org/x/net v0.4.0 // indirect
 	golang.org/x/sync v0.0.0-20220722155255-886fb9371eb4 // indirect
 	golang.org/x/sys v0.3.0 // indirect

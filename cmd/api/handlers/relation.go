@@ -13,9 +13,9 @@ import (
 
 //RelationAction implement follow and unfollow actions
 func RelationAction(c *gin.Context) {
-	token := c.PostForm("token")
-	toUserIdStr := c.PostForm("to_user_id")
-	actionTypeStr := c.PostForm("action_type")
+	token := c.Query("token")
+	toUserIdStr := c.Query("to_user_id")
+	actionTypeStr := c.Query("action_type")
 
 	if len(token) == 0 {
 		SendResponse(c, errno.ParamErr)

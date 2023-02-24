@@ -20,12 +20,10 @@ func NewCpuLimitHandler() remote.InboundHandler {
 	return &cpuLimitHandler{}
 }
 
-// OnActive implements the remote.InboundHandler interface.
 func (c *cpuLimitHandler) OnActive(ctx context.Context, conn net.Conn) (context.Context, error) {
 	return ctx, nil
 }
 
-// OnRead implements the remote.InboundHandler interface.
 func (c *cpuLimitHandler) OnRead(ctx context.Context, conn net.Conn) (context.Context, error) {
 	p := cpuPercent()
 	klog.CtxInfof(ctx, "current cpu is %.2g", p)
@@ -35,12 +33,10 @@ func (c *cpuLimitHandler) OnRead(ctx context.Context, conn net.Conn) (context.Co
 	return ctx, nil
 }
 
-//OnInactive implements the remote.InboundHandler interface.
 func (c *cpuLimitHandler) OnInactive(ctx context.Context, conn net.Conn) context.Context {
 	return ctx
 }
 
-// OnMessage implements the remote.InboundHandler interface.
 func (c *cpuLimitHandler) OnMessage(ctx context.Context, args, result remote.Message) (context.Context, error) {
 	return ctx, nil
 }
