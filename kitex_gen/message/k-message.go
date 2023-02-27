@@ -167,7 +167,7 @@ func (p *MessageChatRequest) BLength() int {
 
 func (p *MessageChatRequest) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "Token", thrift.STRING, 1)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "token", thrift.STRING, 1)
 	offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, p.Token)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -176,7 +176,7 @@ func (p *MessageChatRequest) fastWriteField1(buf []byte, binaryWriter bthrift.Bi
 
 func (p *MessageChatRequest) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "ToUserId", thrift.I64, 2)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "to_user_id", thrift.I64, 2)
 	offset += bthrift.Binary.WriteI64(buf[offset:], p.ToUserId)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -185,7 +185,7 @@ func (p *MessageChatRequest) fastWriteField2(buf []byte, binaryWriter bthrift.Bi
 
 func (p *MessageChatRequest) field1Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("Token", thrift.STRING, 1)
+	l += bthrift.Binary.FieldBeginLength("token", thrift.STRING, 1)
 	l += bthrift.Binary.StringLengthNocopy(p.Token)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -194,7 +194,7 @@ func (p *MessageChatRequest) field1Length() int {
 
 func (p *MessageChatRequest) field2Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("ToUserId", thrift.I64, 2)
+	l += bthrift.Binary.FieldBeginLength("to_user_id", thrift.I64, 2)
 	l += bthrift.Binary.I64Length(p.ToUserId)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -387,7 +387,7 @@ func (p *MessageChatResponse) BLength() int {
 
 func (p *MessageChatResponse) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "StatusCode", thrift.I32, 1)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "status_code", thrift.I32, 1)
 	offset += bthrift.Binary.WriteI32(buf[offset:], p.StatusCode)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -397,7 +397,7 @@ func (p *MessageChatResponse) fastWriteField1(buf []byte, binaryWriter bthrift.B
 func (p *MessageChatResponse) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
 	if p.IsSetStatusMsg() {
-		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "StatusMsg", thrift.STRING, 2)
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "status_msg", thrift.STRING, 2)
 		offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, *p.StatusMsg)
 
 		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -407,7 +407,7 @@ func (p *MessageChatResponse) fastWriteField2(buf []byte, binaryWriter bthrift.B
 
 func (p *MessageChatResponse) fastWriteField3(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "VideoList", thrift.LIST, 3)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "video_list", thrift.LIST, 3)
 	listBeginOffset := offset
 	offset += bthrift.Binary.ListBeginLength(thrift.STRUCT, 0)
 	var length int
@@ -423,7 +423,7 @@ func (p *MessageChatResponse) fastWriteField3(buf []byte, binaryWriter bthrift.B
 
 func (p *MessageChatResponse) field1Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("StatusCode", thrift.I32, 1)
+	l += bthrift.Binary.FieldBeginLength("status_code", thrift.I32, 1)
 	l += bthrift.Binary.I32Length(p.StatusCode)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -433,7 +433,7 @@ func (p *MessageChatResponse) field1Length() int {
 func (p *MessageChatResponse) field2Length() int {
 	l := 0
 	if p.IsSetStatusMsg() {
-		l += bthrift.Binary.FieldBeginLength("StatusMsg", thrift.STRING, 2)
+		l += bthrift.Binary.FieldBeginLength("status_msg", thrift.STRING, 2)
 		l += bthrift.Binary.StringLengthNocopy(*p.StatusMsg)
 
 		l += bthrift.Binary.FieldEndLength()
@@ -443,7 +443,7 @@ func (p *MessageChatResponse) field2Length() int {
 
 func (p *MessageChatResponse) field3Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("VideoList", thrift.LIST, 3)
+	l += bthrift.Binary.FieldBeginLength("video_list", thrift.LIST, 3)
 	l += bthrift.Binary.ListBeginLength(thrift.STRUCT, len(p.VideoList))
 	for _, v := range p.VideoList {
 		l += v.BLength()
@@ -686,7 +686,7 @@ func (p *Message) BLength() int {
 
 func (p *Message) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "Id", thrift.I64, 1)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "id", thrift.I64, 1)
 	offset += bthrift.Binary.WriteI64(buf[offset:], p.Id)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -695,7 +695,7 @@ func (p *Message) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWriter)
 
 func (p *Message) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "ToUserId", thrift.I64, 2)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "to_user_id", thrift.I64, 2)
 	offset += bthrift.Binary.WriteI64(buf[offset:], p.ToUserId)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -704,7 +704,7 @@ func (p *Message) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter)
 
 func (p *Message) fastWriteField3(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "FromUserId", thrift.I64, 3)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "from_user_id", thrift.I64, 3)
 	offset += bthrift.Binary.WriteI64(buf[offset:], p.FromUserId)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -713,7 +713,7 @@ func (p *Message) fastWriteField3(buf []byte, binaryWriter bthrift.BinaryWriter)
 
 func (p *Message) fastWriteField4(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "Content", thrift.STRING, 4)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "content", thrift.STRING, 4)
 	offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, p.Content)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -723,7 +723,7 @@ func (p *Message) fastWriteField4(buf []byte, binaryWriter bthrift.BinaryWriter)
 func (p *Message) fastWriteField5(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
 	if p.IsSetCreateTime() {
-		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "CreateTime", thrift.STRING, 5)
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "create_time", thrift.STRING, 5)
 		offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, *p.CreateTime)
 
 		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -733,7 +733,7 @@ func (p *Message) fastWriteField5(buf []byte, binaryWriter bthrift.BinaryWriter)
 
 func (p *Message) field1Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("Id", thrift.I64, 1)
+	l += bthrift.Binary.FieldBeginLength("id", thrift.I64, 1)
 	l += bthrift.Binary.I64Length(p.Id)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -742,7 +742,7 @@ func (p *Message) field1Length() int {
 
 func (p *Message) field2Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("ToUserId", thrift.I64, 2)
+	l += bthrift.Binary.FieldBeginLength("to_user_id", thrift.I64, 2)
 	l += bthrift.Binary.I64Length(p.ToUserId)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -751,7 +751,7 @@ func (p *Message) field2Length() int {
 
 func (p *Message) field3Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("FromUserId", thrift.I64, 3)
+	l += bthrift.Binary.FieldBeginLength("from_user_id", thrift.I64, 3)
 	l += bthrift.Binary.I64Length(p.FromUserId)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -760,7 +760,7 @@ func (p *Message) field3Length() int {
 
 func (p *Message) field4Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("Content", thrift.STRING, 4)
+	l += bthrift.Binary.FieldBeginLength("content", thrift.STRING, 4)
 	l += bthrift.Binary.StringLengthNocopy(p.Content)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -770,7 +770,7 @@ func (p *Message) field4Length() int {
 func (p *Message) field5Length() int {
 	l := 0
 	if p.IsSetCreateTime() {
-		l += bthrift.Binary.FieldBeginLength("CreateTime", thrift.STRING, 5)
+		l += bthrift.Binary.FieldBeginLength("create_time", thrift.STRING, 5)
 		l += bthrift.Binary.StringLengthNocopy(*p.CreateTime)
 
 		l += bthrift.Binary.FieldEndLength()
@@ -982,7 +982,7 @@ func (p *RelationActionRequest) BLength() int {
 
 func (p *RelationActionRequest) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "Token", thrift.STRING, 1)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "token", thrift.STRING, 1)
 	offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, p.Token)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -991,7 +991,7 @@ func (p *RelationActionRequest) fastWriteField1(buf []byte, binaryWriter bthrift
 
 func (p *RelationActionRequest) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "ToUserId", thrift.I64, 2)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "to_user_id", thrift.I64, 2)
 	offset += bthrift.Binary.WriteI64(buf[offset:], p.ToUserId)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -1000,7 +1000,7 @@ func (p *RelationActionRequest) fastWriteField2(buf []byte, binaryWriter bthrift
 
 func (p *RelationActionRequest) fastWriteField3(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "ActionType", thrift.I32, 3)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "action_type", thrift.I32, 3)
 	offset += bthrift.Binary.WriteI32(buf[offset:], p.ActionType)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -1009,7 +1009,7 @@ func (p *RelationActionRequest) fastWriteField3(buf []byte, binaryWriter bthrift
 
 func (p *RelationActionRequest) fastWriteField4(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "Content", thrift.STRING, 4)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "content", thrift.STRING, 4)
 	offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, p.Content)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -1018,7 +1018,7 @@ func (p *RelationActionRequest) fastWriteField4(buf []byte, binaryWriter bthrift
 
 func (p *RelationActionRequest) field1Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("Token", thrift.STRING, 1)
+	l += bthrift.Binary.FieldBeginLength("token", thrift.STRING, 1)
 	l += bthrift.Binary.StringLengthNocopy(p.Token)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -1027,7 +1027,7 @@ func (p *RelationActionRequest) field1Length() int {
 
 func (p *RelationActionRequest) field2Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("ToUserId", thrift.I64, 2)
+	l += bthrift.Binary.FieldBeginLength("to_user_id", thrift.I64, 2)
 	l += bthrift.Binary.I64Length(p.ToUserId)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -1036,7 +1036,7 @@ func (p *RelationActionRequest) field2Length() int {
 
 func (p *RelationActionRequest) field3Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("ActionType", thrift.I32, 3)
+	l += bthrift.Binary.FieldBeginLength("action_type", thrift.I32, 3)
 	l += bthrift.Binary.I32Length(p.ActionType)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -1045,7 +1045,7 @@ func (p *RelationActionRequest) field3Length() int {
 
 func (p *RelationActionRequest) field4Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("Content", thrift.STRING, 4)
+	l += bthrift.Binary.FieldBeginLength("content", thrift.STRING, 4)
 	l += bthrift.Binary.StringLengthNocopy(p.Content)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -1195,7 +1195,7 @@ func (p *RelationActionResponse) BLength() int {
 
 func (p *RelationActionResponse) fastWriteField1(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "StatusCode", thrift.I32, 1)
+	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "status_code", thrift.I32, 1)
 	offset += bthrift.Binary.WriteI32(buf[offset:], p.StatusCode)
 
 	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -1205,7 +1205,7 @@ func (p *RelationActionResponse) fastWriteField1(buf []byte, binaryWriter bthrif
 func (p *RelationActionResponse) fastWriteField2(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
 	if p.IsSetStatusMsg() {
-		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "StatusMsg", thrift.STRING, 2)
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "status_msg", thrift.STRING, 2)
 		offset += bthrift.Binary.WriteStringNocopy(buf[offset:], binaryWriter, *p.StatusMsg)
 
 		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
@@ -1215,7 +1215,7 @@ func (p *RelationActionResponse) fastWriteField2(buf []byte, binaryWriter bthrif
 
 func (p *RelationActionResponse) field1Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("StatusCode", thrift.I32, 1)
+	l += bthrift.Binary.FieldBeginLength("status_code", thrift.I32, 1)
 	l += bthrift.Binary.I32Length(p.StatusCode)
 
 	l += bthrift.Binary.FieldEndLength()
@@ -1225,7 +1225,7 @@ func (p *RelationActionResponse) field1Length() int {
 func (p *RelationActionResponse) field2Length() int {
 	l := 0
 	if p.IsSetStatusMsg() {
-		l += bthrift.Binary.FieldBeginLength("StatusMsg", thrift.STRING, 2)
+		l += bthrift.Binary.FieldBeginLength("status_msg", thrift.STRING, 2)
 		l += bthrift.Binary.StringLengthNocopy(*p.StatusMsg)
 
 		l += bthrift.Binary.FieldEndLength()

@@ -8,11 +8,21 @@ import (
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/errno"
 )
 
-
 type RelationServiceImpl struct{}
 
-func (s *RelationServiceImpl) RelationFriendList(ctx context.Context, req *relation.RelationFriendListRequest) (resp *relation.RelationFriendListResponse, err error){
+func (s *RelationServiceImpl) RelationFriendList(ctx context.Context, req *relation.RelationFriendListRequest) (resp *relation.RelationFriendListResponse, err error) {
 	resp = new(relation.RelationFriendListResponse)
+	if len(req.Token) == 0 || req.UserId == 0 {
+		resp = pack.BuildFriendListResp(errno.ParamErr)
+		return resp, nil
+	}
+	friendlist, err := service.NewFriendListService(ctx).FriendList(req)
+	if err != nil {
+		resp = pack.BuildFriendListResp(err)
+		return resp, nil
+	}
+	resp = pack.BuildFriendListResp(errno.Success)
+	resp.UserList = friendlist
 	return resp, nil
 }
 
@@ -32,7 +42,6 @@ func (s *RelationServiceImpl) RelationAction(ctx context.Context, req *relation.
 	resp = pack.BuildRelationActionResp(errno.Success)
 	return resp, nil
 }
-
 
 func (s *RelationServiceImpl) RelationFollowList(ctx context.Context, req *relation.RelationFollowListRequest) (resp *relation.RelationFollowListResponse, err error) {
 	resp = new(relation.RelationFollowListResponse)

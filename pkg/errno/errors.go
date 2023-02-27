@@ -32,6 +32,20 @@ func WithCode(code int, format string, args ...interface{}) error {
 	}
 }
 
+func WrapC(err error, code int, format string, args ...interface{}) error {
+	if err == nil {
+		return nil
+	}
+
+	return &withCode{
+		err:   fmt.Errorf(format, args...),
+		code:  code,
+		cause: err,
+		msg:   format,
+		stack: callers(),
+	}
+}
+
 func (w *withCode) Error() string { return w.msg }
 
 func (w *withCode) Cause() error { return w.cause }

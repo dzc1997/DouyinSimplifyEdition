@@ -50,6 +50,17 @@ func RelationAction(ctx context.Context, req *relation.RelationActionRequest) er
 	return nil
 }
 
+func FriendList(ctx context.Context, req *relation.RelationFriendListRequest) ([]*relation.FriendUser, error)  {
+	resp, err := relationClient.RelationFriendList(ctx, req)
+	if err != nil {
+		return nil, err
+	}
+	if resp.StatusCode != 0 {
+		return nil, errno.NewErrNo(resp.StatusCode, *resp.StatusMsg)
+	}
+	return resp.UserList, nil
+}
+
 func FollowList(ctx context.Context, req *relation.RelationFollowListRequest) ([]*relation.User, error) {
 	resp, err := relationClient.RelationFollowList(ctx, req)
 	if err != nil {

@@ -18,7 +18,7 @@ type UserRaw struct {
 	Avatar          string `gorm:"column:avatar,type:varchar(100);not null"`           // 用户头像
 	BackgroundImage string `gorm:"column:background_image,type:varchar(100);not null"` // 用户个人页顶部大图
 	Signature       string `gorm:"column:signature,type:varchar(1000);not null"`       // 个人简介
-	TotalFavorited  string `gorm:"column:total_favorited;type:varchar(1000);not null"` // 获赞数量
+	TotalFavorited  int64 `gorm:"column:total_favorited;default:0"` // 获赞数量
 	WorkCount       int64  `gorm:"column:work_count;default:0"`                        // 作品数量
 	FavoriteCount   int64  `gorm:"column:favorite_count;default:0"`                    // 点赞数量
 }

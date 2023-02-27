@@ -6,6 +6,22 @@ import (
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/errno"
 )
 
+func friendListResp(err errno.ErrNo) *relation.RelationFriendListResponse {
+	return &relation.RelationFriendListResponse{StatusCode: err.ErrCode, StatusMsg: &err.ErrMsg}
+}
+
+func BuildFriendListResp(err error) *relation.RelationFriendListResponse {
+	if err == nil {
+		return friendListResp(errno.Success)
+	}
+	e := errno.ErrNo{}
+	if errors.As(err, &e) {
+		return friendListResp(e)
+	}
+	s := errno.ServiceErr.WithMessage(err.Error())
+	return friendListResp(s)
+}
+
 func BuildRelationActionResp(err error) *relation.RelationActionResponse {
 	if err == nil {
 		return relationActionResp(errno.Success)
