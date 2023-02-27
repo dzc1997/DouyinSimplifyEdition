@@ -26,7 +26,7 @@ func (s *FriendListService) FriendList(req *relation.RelationFriendListRequest) 
 	if currentId != req.UserId {
 		return nil, errors.New("token check fail")
 	}
-	//获取
+
 	user, err := db.QueryUserByIds(s.ctx, []int64{req.UserId})
 	if err != nil {
 		return nil, err
@@ -35,7 +35,7 @@ func (s *FriendListService) FriendList(req *relation.RelationFriendListRequest) 
 		return nil, errors.New("userId not exist")
 	}
 
-	//获取目标用户关注的用户id号
+	
 	follows, err := db.QueryFollowById(s.ctx, req.UserId)
 	if err != nil {
 		return nil, err
@@ -55,7 +55,7 @@ func (s *FriendListService) FriendList(req *relation.RelationFriendListRequest) 
 		followerIds = append(followerIds, follower.UserId)
 	}
 
-	//排序两个数组
+
 	sort.Slice(followIds, func(i, j int) bool {
 		return followIds[i] < followIds[j]
 	})
@@ -63,7 +63,7 @@ func (s *FriendListService) FriendList(req *relation.RelationFriendListRequest) 
 		return followerIds[i] < followerIds[j]
 	})
 
-	//双指针找出重复值
+	
 	n, m := len(followIds), len(followerIds)
 	for i, j := 0, 0; i < n && j < m; i++ {
 		for followerIds[j] < followIds[i] {
