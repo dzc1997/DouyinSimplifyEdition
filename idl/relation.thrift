@@ -75,7 +75,7 @@ struct FriendUser {
     10: optional i64 work_count  // 作品数量
     11: optional i64 favorite_count //点赞数量
     12: optional string message //和好友的最新聊天记录
-    13: i64 msg_type  //message消息的类型，0 => 当前请求用户接收的消息， 1 => 当前请求用户发送的消息
+    13: optional i64 msg_type  //message消息的类型，0 => 当前请求用户接收的消息， 1 => 当前请求用户发送的消息
 }
 
 service RelationService {
