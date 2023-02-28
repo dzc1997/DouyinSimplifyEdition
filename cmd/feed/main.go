@@ -7,7 +7,6 @@ import (
 	"github.com/cloudwego/kitex/server"
 	"github.com/dzc1997/DouyinSimplifyEdition/cmd/feed/dal"
 	feed "github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/feed/feedservice"
-	"github.com/dzc1997/DouyinSimplifyEdition/pkg/bound"
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/constants"
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/middleware"
 	tracer2 "github.com/dzc1997/DouyinSimplifyEdition/pkg/tracer"
@@ -39,7 +38,6 @@ func main() {
 		server.WithLimit(&limit.Option{MaxConnections: 1000, MaxQPS: 100}), //limit
 		server.WithMuxTransport(),                                          //Multiplex
 		server.WithSuite(trace.NewDefaultServerSuite()),                    //tracer
-		server.WithBoundHandler(bound.NewCpuLimitHandler()),                //BoundHandler
 		server.WithRegistry(r),                                             //registry
 	)
 	err = svr.Run()
