@@ -13,29 +13,28 @@ const (
 	CommentAddress     = "127.0.0.1:8085"
 	RelationAddress    = "127.0.0.1:8086"
 	OssEndPoint        = "oss-cn-hangzhou.aliyuncs.com"
-	OssAccessKeyId     = "LTAI5t8HQjxzMFRRAoZk3kBW"
-	OssAccessKeySecret = "d4IF8KFlPJipNHydPoEnqiwf5xJ7t1"
+	OssAccessKeyId     = ""
+	OssAccessKeySecret = ""
 	OssBucket          = "dynn"
-
 
 	VideoTableName    = "video"
 	UserTableName     = "user"
 	FavoriteTableName = "favorite"
 	CommentTableName  = "comment"
 	RelationTableName = "relation"
-	FriendTableName = "friend"
+	FriendTableName   = "friend"
 
-	SecretKey           = "secret key"
-	IdentiryKey         = "id"
+	SecretKey   = "secret key"
+	IdentiryKey = "id"
 
 	TimeFormat = "2006-01-02 15:04:05"
 
-	Like   = 1
-	Unlike = 2
+	Like       = 1
+	Unlike     = 2
 	AddComment = 1
 	DelComment = 2
-	Follow   = 1
-	UnFollow = 2
+	Follow     = 1
+	UnFollow   = 2
 
 	ApiServiceName      = "api"
 	FeedServiceName     = "feed"
@@ -45,10 +44,7 @@ const (
 	CommentServiceName  = "comment"
 	RelationServiceName = "relation"
 
-
-
 	MySQLMaxIdleConns    = 10
 	MySQLMaxOpenConns    = 100
 	MySQLConnMaxLifetime = time.Hour
-
 )
