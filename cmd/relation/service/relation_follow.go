@@ -38,8 +38,8 @@ func (s *FollowListService) FollowList(req *relation.RelationFollowListRequest) 
 		return nil, err
 	}
 	userIds := make([]int64, 0)
-	for _, relation := range relations {
-		userIds = append(userIds, relation.ToUserId)
+	for _, relation_ := range relations {
+		userIds = append(userIds, relation_.ToUserId)
 	}
 
 	//获取用户id号对应的用户信息

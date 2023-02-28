@@ -35,10 +35,7 @@ func (s *FriendListService) FriendList(req *relation.RelationFriendListRequest) 
 		return nil, errors.New("userId not exist")
 	}
 
-<<<<<<< HEAD
-	
-=======
->>>>>>> 649cdfe (dy)
+
 	follows, err := db.QueryFollowById(s.ctx, req.UserId)
 	if err != nil {
 		return nil, err
@@ -57,10 +54,7 @@ func (s *FriendListService) FriendList(req *relation.RelationFriendListRequest) 
 		followerIds = append(followerIds, follower.UserId)
 	}
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 649cdfe (dy)
 	sort.Slice(followIds, func(i, j int) bool {
 		return followIds[i] < followIds[j]
 	})
@@ -68,10 +62,6 @@ func (s *FriendListService) FriendList(req *relation.RelationFriendListRequest) 
 		return followerIds[i] < followerIds[j]
 	})
 
-<<<<<<< HEAD
-	
-=======
->>>>>>> 649cdfe (dy)
 	n, m := len(followIds), len(followerIds)
 	for i, j := 0, 0; i < n && j < m; i++ {
 		for followerIds[j] < followIds[i] {
