@@ -3063,7 +3063,7 @@ type FriendUser struct {
 	WorkCount       *int64  `thrift:"work_count,10,optional" frugal:"10,optional,i64" json:"work_count,omitempty"`
 	FavoriteCount   *int64  `thrift:"favorite_count,11,optional" frugal:"11,optional,i64" json:"favorite_count,omitempty"`
 	Message         *string `thrift:"message,12,optional" frugal:"12,optional,string" json:"message,omitempty"`
-	MsgType         int64   `thrift:"msg_type,13" frugal:"13,default,i64" json:"msg_type"`
+	MsgType         *int64  `thrift:"msg_type,13,optional" frugal:"13,optional,i64" json:"msg_type,omitempty"`
 }
 
 func NewFriendUser() *FriendUser {
@@ -3167,8 +3167,13 @@ func (p *FriendUser) GetMessage() (v string) {
 	return *p.Message
 }
 
+var FriendUser_MsgType_DEFAULT int64
+
 func (p *FriendUser) GetMsgType() (v int64) {
-	return p.MsgType
+	if !p.IsSetMsgType() {
+		return FriendUser_MsgType_DEFAULT
+	}
+	return *p.MsgType
 }
 func (p *FriendUser) SetId(val int64) {
 	p.Id = val
@@ -3206,7 +3211,7 @@ func (p *FriendUser) SetFavoriteCount(val *int64) {
 func (p *FriendUser) SetMessage(val *string) {
 	p.Message = val
 }
-func (p *FriendUser) SetMsgType(val int64) {
+func (p *FriendUser) SetMsgType(val *int64) {
 	p.MsgType = val
 }
 
@@ -3260,6 +3265,10 @@ func (p *FriendUser) IsSetFavoriteCount() bool {
 
 func (p *FriendUser) IsSetMessage() bool {
 	return p.Message != nil
+}
+
+func (p *FriendUser) IsSetMsgType() bool {
+	return p.MsgType != nil
 }
 
 func (p *FriendUser) Read(iprot thrift.TProtocol) (err error) {
@@ -3553,7 +3562,7 @@ func (p *FriendUser) ReadField13(iprot thrift.TProtocol) error {
 	if v, err := iprot.ReadI64(); err != nil {
 		return err
 	} else {
-		p.MsgType = v
+		p.MsgType = &v
 	}
 	return nil
 }
@@ -3858,14 +3867,16 @@ WriteFieldEndError:
 }
 
 func (p *FriendUser) writeField13(oprot thrift.TProtocol) (err error) {
-	if err = oprot.WriteFieldBegin("msg_type", thrift.I64, 13); err != nil {
-		goto WriteFieldBeginError
-	}
-	if err := oprot.WriteI64(p.MsgType); err != nil {
-		return err
-	}
-	if err = oprot.WriteFieldEnd(); err != nil {
-		goto WriteFieldEndError
+	if p.IsSetMsgType() {
+		if err = oprot.WriteFieldBegin("msg_type", thrift.I64, 13); err != nil {
+			goto WriteFieldBeginError
+		}
+		if err := oprot.WriteI64(*p.MsgType); err != nil {
+			return err
+		}
+		if err = oprot.WriteFieldEnd(); err != nil {
+			goto WriteFieldEndError
+		}
 	}
 	return nil
 WriteFieldBeginError:
@@ -4058,9 +4069,14 @@ func (p *FriendUser) Field12DeepEqual(src *string) bool {
 	}
 	return true
 }
-func (p *FriendUser) Field13DeepEqual(src int64) bool {
+func (p *FriendUser) Field13DeepEqual(src *int64) bool {
 
-	if p.MsgType != src {
+	if p.MsgType == src {
+		return true
+	} else if p.MsgType == nil || src == nil {
+		return false
+	}
+	if *p.MsgType != *src {
 		return false
 	}
 	return true

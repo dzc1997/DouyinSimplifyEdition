@@ -2759,8 +2759,7 @@ func (p *FriendUser) FastReadField13(buf []byte) (int, error) {
 		return offset, err
 	} else {
 		offset += l
-
-		p.MsgType = v
+		p.MsgType = &v
 
 	}
 	return offset, nil
@@ -2945,10 +2944,12 @@ func (p *FriendUser) fastWriteField12(buf []byte, binaryWriter bthrift.BinaryWri
 
 func (p *FriendUser) fastWriteField13(buf []byte, binaryWriter bthrift.BinaryWriter) int {
 	offset := 0
-	offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "msg_type", thrift.I64, 13)
-	offset += bthrift.Binary.WriteI64(buf[offset:], p.MsgType)
+	if p.IsSetMsgType() {
+		offset += bthrift.Binary.WriteFieldBegin(buf[offset:], "msg_type", thrift.I64, 13)
+		offset += bthrift.Binary.WriteI64(buf[offset:], *p.MsgType)
 
-	offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
+		offset += bthrift.Binary.WriteFieldEnd(buf[offset:])
+	}
 	return offset
 }
 
@@ -3080,10 +3081,12 @@ func (p *FriendUser) field12Length() int {
 
 func (p *FriendUser) field13Length() int {
 	l := 0
-	l += bthrift.Binary.FieldBeginLength("msg_type", thrift.I64, 13)
-	l += bthrift.Binary.I64Length(p.MsgType)
+	if p.IsSetMsgType() {
+		l += bthrift.Binary.FieldBeginLength("msg_type", thrift.I64, 13)
+		l += bthrift.Binary.I64Length(*p.MsgType)
 
-	l += bthrift.Binary.FieldEndLength()
+		l += bthrift.Binary.FieldEndLength()
+	}
 	return l
 }
 
