@@ -15,12 +15,12 @@ type UserRaw struct {
 	Password        string `gorm:"column:password;type:varchar(32);not null"`
 	FollowCount     int64  `gorm:"column:follow_count;default:0"`
 	FollowerCount   int64  `gorm:"column:follower_count;default:0"`
-	Avatar          string `gorm:"column:avatar,type:varchar(100);not null"`           // 用户头像
-	BackgroundImage string `gorm:"column:background_image,type:varchar(100);not null"` // 用户个人页顶部大图
-	Signature       string `gorm:"column:signature,type:varchar(1000);not null"`       // 个人简介
-	TotalFavorited  int64 `gorm:"column:total_favorited;default:0"` // 获赞数量
-	WorkCount       int64  `gorm:"column:work_count;default:0"`                        // 作品数量
-	FavoriteCount   int64  `gorm:"column:favorite_count;default:0"`                    // 点赞数量
+	Avatar          string `gorm:"column:avatar,type:varchar(100);not null"`
+	BackgroundImage string `gorm:"column:background_image,type:varchar(100);not null"`
+	Signature       string `gorm:"column:signature,type:varchar(1000);not null"`
+	TotalFavorited  int64 `gorm:"column:total_favorited;default:0"`
+	WorkCount       int64  `gorm:"column:work_count;default:0"`
+	FavoriteCount   int64  `gorm:"column:favorite_count;default:0"`
 }
 
 type RelationRaw struct {
@@ -62,25 +62,13 @@ func (RelationRaw) TableName() string {
 	return constants.RelationTableName
 }
 
-//QueryVideoByLatestTime query video info by latest create Time
 func QueryVideoByLatestTime(ctx context.Context, latestTime int64) ([]*VideoRaw, error) {
 	var videos []*VideoRaw
-	time := time.UnixMilli(latestTime)
-	err := DB.WithContext(ctx).Limit(30).Order("update_time desc").Where("update_time < ?", time).Find(&videos).Error
+	time_ := time.UnixMilli(latestTime)
+	err := DB.WithContext(ctx).Limit(30).Order("update_time desc").Where("update_time < ?", time_).Find(&videos).Error
 	if err != nil {
 		klog.Error("QueryVideoByLatestTime find video error " + err.Error())
 		return videos, err
-	}
-	return videos, nil
-}
-
-//QueryVideoByVideoIds query video info by video ids
-func QueryVideoByVideoIds(ctx context.Context, videoIds []int64) ([]*VideoRaw, error) {
-	var videos []*VideoRaw
-	err := DB.WithContext(ctx).Where("id in (?)", videoIds).Find(&videos).Error
-	if err != nil {
-		klog.Error("QueryVideoByVideoIds error " + err.Error())
-		return nil, err
 	}
 	return videos, nil
 }

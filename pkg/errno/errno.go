@@ -23,7 +23,6 @@ func (e ErrNo) WithMessage(msg string) ErrNo {
 	return e
 }
 
-// ConvertErr convert error to Errno
 func ConvertErr(err error) ErrNo {
 	Err := ErrNo{}
 	if errors.As(err, &Err) {

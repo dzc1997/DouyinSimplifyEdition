@@ -9,7 +9,6 @@ import (
 
 var _ endpoint.Middleware = ClientMiddleware
 
-//ClientMiddleware client middleware print server address, rpc timeout and connection timeout
 func ClientMiddleware(next endpoint.Endpoint) endpoint.Endpoint {
 	return func(ctx context.Context, req, resp interface{}) (err error) {
 		ri := rpcinfo.GetRPCInfo(ctx)

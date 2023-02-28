@@ -64,7 +64,7 @@ func (RelationRaw) TableName() string {
 }
 
 func CreateComment(ctx context.Context, comment *CommentRaw) error {
-	DB.WithContext(ctx).Transaction(func(tx *gorm.DB) error {
+	_ = DB.WithContext(ctx).Transaction(func(tx *gorm.DB) error {
 		err := tx.Table("comment").Create(&comment).Error
 		if err != nil {
 			klog.Error("create comment fail " + err.Error())
@@ -87,7 +87,7 @@ func CreateComment(ctx context.Context, comment *CommentRaw) error {
 
 func DeleteComment(ctx context.Context, commentId int64) (*CommentRaw, error) {
 	var commentRaw *CommentRaw
-	DB.WithContext(ctx).Transaction(func(tx *gorm.DB) error {
+	_ = DB.WithContext(ctx).Transaction(func(tx *gorm.DB) error {
 		err := tx.Table("comment").Where("id = ?", commentId).First(&commentRaw).Error
 		if err == gorm.ErrRecordNotFound {
 			klog.Errorf("not find comment %v, %v", commentRaw, err.Error())
@@ -112,7 +112,6 @@ func DeleteComment(ctx context.Context, commentId int64) (*CommentRaw, error) {
 	return commentRaw, nil
 }
 
-//通过评论id查询一组评论信息
 func QueryCommentByCommentIds(ctx context.Context, commentIds []int64) ([]*CommentRaw, error) {
 	var comments []*CommentRaw
 	err := DB.WithContext(ctx).Table("comment").Where("id In ?", commentIds).Find(&comments).Error
@@ -123,7 +122,6 @@ func QueryCommentByCommentIds(ctx context.Context, commentIds []int64) ([]*Comme
 	return comments, nil
 }
 
-//通过视频id号倒序返回一组评论信息
 func QueryCommentByVideoId(ctx context.Context, videoId int64) ([]*CommentRaw, error) {
 	var comments []*CommentRaw
 	err := DB.WithContext(ctx).Table("comment").Order("updated_at desc").Where("video_id = ?", videoId).Find(&comments).Error

@@ -77,7 +77,7 @@ func QueryFavoriteByIds(ctx context.Context, currentId int64, videoIds []int64) 
 }
 
 func CreateFavorite(ctx context.Context, favorite *FavoriteRaw, videoId int64) error {
-	DB.WithContext(ctx).Transaction(func(tx *gorm.DB) error {
+	_ = DB.WithContext(ctx).Transaction(func(tx *gorm.DB) error {
 		err := tx.Table("video").Where("id = ?", videoId).Update("favorite_count", gorm.Expr("favorite_count + ?", 1)).Error
 		if err != nil {
 			klog.Error("AddFavoriteCount error " + err.Error())
@@ -96,7 +96,7 @@ func CreateFavorite(ctx context.Context, favorite *FavoriteRaw, videoId int64) e
 }
 
 func DeleteFavorite(ctx context.Context, currentId int64, videoId int64) error {
-	DB.WithContext(ctx).Transaction(func(tx *gorm.DB) error {
+	_ = DB.WithContext(ctx).Transaction(func(tx *gorm.DB) error {
 		var favorite *FavoriteRaw
 		err := tx.Table("favorite").Where("user_id = ? AND video_id = ?", currentId, videoId).Delete(&favorite).Error
 		if err != nil {
