@@ -1,17 +1,16 @@
 package service
 
 import (
-	"bytes"
 	"context"
 	"github.com/cloudwego/kitex/pkg/klog"
-	"github.com/dzc1997/DouyinSimplifyEdition/cmd/favorite/dal/db"
-	"github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/favorite"
+	"github.com/dzc1997/DouyinSimplifyEdition/cmd/feed/dal/db"
+	"github.com/dzc1997/DouyinSimplifyEdition/kitex_gen/feed"
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/constants"
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/jwt"
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/oss"
-	"io"
 	"os"
 	"testing"
+	"time"
 )
 
 var Token string
@@ -34,56 +33,39 @@ func TestMain(m *testing.M) {
 		klog.Errorf("open local file %v fail", path)
 	}
 	defer file.Close()
-	buf := bytes.NewBuffer(nil)
-	if _, err := io.Copy(buf, file); err != nil {
-		panic(err)
-	}
 	m.Run()
 }
 
-func TestFavoriteAction(t *testing.T) {
+func TestFeed(t *testing.T) {
 	type reqArgs struct {
+		latestTime int64
 		token      string
-		videoId    int64
-		actionType int32
 	}
-	favoriteActionTest := []struct {
+	feedTest := []struct {
 		name   string
 		args   reqArgs
 		result bool
 	}{
 		{
-			name: "点赞操作",
+			name: "feed流",
 			args: reqArgs{
+				latestTime: time.Now().Unix(),
 				token:      Token,
-				videoId:    1,
-				actionType: 1,
-			},
-			result: false,
-		},
-		{
-			name: "取消赞操作",
-			args: reqArgs{
-				token:      Token,
-				videoId:    1,
-				actionType: 2,
 			},
 			result: false,
 		},
 	}
-
-	for _, tt := range favoriteActionTest {
+	for _, tt := range feedTest {
 		t.Run(tt.name, func(t *testing.T) {
-			err := NewFavoriteActionService(context.Background()).FavoriteAction(&favorite.FavoriteActionRequest{
-				Token:      tt.args.token,
-				VideoId:    tt.args.videoId,
-				ActionType: tt.args.actionType,
+			_, _, err := NewFeedService(context.Background()).Feed(&feed.FeedRequest{
+				LatestTime: &tt.args.latestTime,
+				Token:      &tt.args.token,
 			})
 			if (err != nil) != tt.result {
-				t.Errorf("FavoriteAction() error = %v, result %v", err, tt.result)
+				t.Errorf("Feed() error = %v, result %v", err, tt.result)
 				return
 			}
-			klog.Info(tt.name + " success")
+			klog.Info(tt.name + "success")
 		})
 	}
 }
