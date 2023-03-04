@@ -12,6 +12,8 @@ const (
 	FavoriteAddress    = "127.0.0.1:8084"
 	CommentAddress     = "127.0.0.1:8085"
 	RelationAddress    = "127.0.0.1:8086"
+	MessageAddress	= "127.0.0.1:8087"
+
 	OssEndPoint        = "oss-cn-hangzhou.aliyuncs.com"
 	OssAccessKeyId     = ""
 	OssAccessKeySecret = ""
@@ -23,6 +25,7 @@ const (
 	CommentTableName  = "comment"
 	RelationTableName = "relation"
 	FriendTableName   = "friend"
+	MessageTableName = "message"
 
 	SecretKey   = "dzc1997"
 	IdentiryKey = "id"
@@ -35,6 +38,7 @@ const (
 	DelComment = 2
 	Follow     = 1
 	UnFollow   = 2
+	SendMessage = 1
 
 	ApiServiceName      = "api"
 	FeedServiceName     = "feed"
@@ -43,6 +47,7 @@ const (
 	FavoriteServiceName = "favorite"
 	CommentServiceName  = "comment"
 	RelationServiceName = "relation"
+	MessageServiceName = "message"
 
 	MySQLMaxIdleConns    = 10
 	MySQLMaxOpenConns    = 100

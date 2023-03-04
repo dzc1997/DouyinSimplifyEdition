@@ -89,6 +89,10 @@ func main() {
 	favorite.POST("/action/", handlers.FavoriteAction)
 	favorite.GET("/list/", handlers.FavoriteList)
 
+	message := douyin.Group("/message")
+	message.POST("/action/", handlers.MessageAction)
+
+
 	if err := http.ListenAndServe(constants.ApiAddress, r); err != nil {
 		klog.Fatal(err)
 	}

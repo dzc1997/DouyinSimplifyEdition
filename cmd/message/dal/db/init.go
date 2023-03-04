@@ -28,10 +28,10 @@ func Init() {
 		panic(err)
 	}
 
-	//err = DB.AutoMigrate(&VideoRaw{})
-	//if err != nil {
-	//	panic(err)
-	//}
+	err = DB.AutoMigrate(&MessageRaw{})
+	if err != nil {
+		panic(err)
+	}
 
 	sqlDB, err := DB.DB()
 	if err != nil {
