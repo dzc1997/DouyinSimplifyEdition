@@ -49,3 +49,15 @@ func MessageAction(ctx context.Context, req *message.MessageActionRequest) error
 	}
 	return nil
 }
+
+
+func MessageChat(ctx context.Context, req *message.MessageChatRequest) ([]*message.Message, error) {
+	resp, err := messageClient.MessageChat(ctx, req)
+	if err != nil {
+		return nil, err
+	}
+	if resp.StatusCode != 0 {
+		return nil, errno.NewErrNo(resp.StatusCode, *resp.StatusMsg)
+	}
+	return resp.MessageList, nil
+}

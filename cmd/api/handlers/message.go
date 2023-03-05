@@ -48,3 +48,25 @@ func MessageAction(c *gin.Context) {
 	}
 	SendResponse(c, errno.Success)
 }
+
+func MessageChat(c *gin.Context) {
+	token := c.Query("token")
+	toUserId := c.Query("to_user_id")
+	toUserId_, err := strconv.ParseInt(toUserId, 10, 64)
+	if err != nil {
+		SendChatResponse(c, nil, errno.ParamParseErr)
+		return
+	}
+
+	req := &message.MessageChatRequest{
+		Token:    token,
+		ToUserId: toUserId_,
+		//PreMsgTime: 0,
+	}
+	messages, err := rpc.MessageChat(context.Background(), req)
+	if err != nil {
+		SendChatResponse(c, nil, errno.ConvertErr(err))
+		return
+	}
+	SendChatResponse(c, messages, errno.Success)
+}

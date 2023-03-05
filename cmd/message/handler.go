@@ -8,13 +8,18 @@ import (
 	"github.com/dzc1997/DouyinSimplifyEdition/pkg/errno"
 )
 
-
-
 type MessageServiceImpl struct{}
 
 func (s *MessageServiceImpl) MessageChat(ctx context.Context, req *message.MessageChatRequest) (r *message.MessageChatResponse, err error) {
-	//TODO implement me
-	panic("implement me")
+	resp := new(message.MessageChatResponse)
+	messages, err := service.NewMessageChatService(ctx).MessageChat(req)
+	if err != nil {
+		resp = pack.BuildMessageChatResp(err)
+		return resp, err
+	}
+	resp = pack.BuildMessageChatResp(errno.Success)
+	resp.MessageList = messages
+	return resp, nil
 }
 
 func (s *MessageServiceImpl) MessageAction(ctx context.Context, req *message.MessageActionRequest) (resp *message.MessageActionResponse, err error) {
@@ -31,4 +36,3 @@ func (s *MessageServiceImpl) MessageAction(ctx context.Context, req *message.Mes
 	resp = pack.BuildMessageActionResp(errno.Success)
 	return resp, nil
 }
-

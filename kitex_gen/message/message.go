@@ -10,8 +10,9 @@ import (
 )
 
 type MessageChatRequest struct {
-	Token    string `thrift:"token,1" frugal:"1,default,string" json:"token"`
-	ToUserId int64  `thrift:"to_user_id,2" frugal:"2,default,i64" json:"to_user_id"`
+	Token      string `thrift:"token,1" frugal:"1,default,string" json:"token"`
+	ToUserId   int64  `thrift:"to_user_id,2" frugal:"2,default,i64" json:"to_user_id"`
+	PreMsgTime int64  `thrift:"pre_msg_time,3" frugal:"3,default,i64" json:"pre_msg_time"`
 }
 
 func NewMessageChatRequest() *MessageChatRequest {
@@ -29,16 +30,24 @@ func (p *MessageChatRequest) GetToken() (v string) {
 func (p *MessageChatRequest) GetToUserId() (v int64) {
 	return p.ToUserId
 }
+
+func (p *MessageChatRequest) GetPreMsgTime() (v int64) {
+	return p.PreMsgTime
+}
 func (p *MessageChatRequest) SetToken(val string) {
 	p.Token = val
 }
 func (p *MessageChatRequest) SetToUserId(val int64) {
 	p.ToUserId = val
 }
+func (p *MessageChatRequest) SetPreMsgTime(val int64) {
+	p.PreMsgTime = val
+}
 
 var fieldIDToName_MessageChatRequest = map[int16]string{
 	1: "token",
 	2: "to_user_id",
+	3: "pre_msg_time",
 }
 
 func (p *MessageChatRequest) Read(iprot thrift.TProtocol) (err error) {
@@ -73,6 +82,16 @@ func (p *MessageChatRequest) Read(iprot thrift.TProtocol) (err error) {
 		case 2:
 			if fieldTypeId == thrift.I64 {
 				if err = p.ReadField2(iprot); err != nil {
+					goto ReadFieldError
+				}
+			} else {
+				if err = iprot.Skip(fieldTypeId); err != nil {
+					goto SkipFieldError
+				}
+			}
+		case 3:
+			if fieldTypeId == thrift.I64 {
+				if err = p.ReadField3(iprot); err != nil {
 					goto ReadFieldError
 				}
 			} else {
@@ -128,6 +147,15 @@ func (p *MessageChatRequest) ReadField2(iprot thrift.TProtocol) error {
 	return nil
 }
 
+func (p *MessageChatRequest) ReadField3(iprot thrift.TProtocol) error {
+	if v, err := iprot.ReadI64(); err != nil {
+		return err
+	} else {
+		p.PreMsgTime = v
+	}
+	return nil
+}
+
 func (p *MessageChatRequest) Write(oprot thrift.TProtocol) (err error) {
 	var fieldId int16
 	if err = oprot.WriteStructBegin("MessageChatRequest"); err != nil {
@@ -140,6 +168,10 @@ func (p *MessageChatRequest) Write(oprot thrift.TProtocol) (err error) {
 		}
 		if err = p.writeField2(oprot); err != nil {
 			fieldId = 2
+			goto WriteFieldError
+		}
+		if err = p.writeField3(oprot); err != nil {
+			fieldId = 3
 			goto WriteFieldError
 		}
 
@@ -195,6 +227,23 @@ WriteFieldEndError:
 	return thrift.PrependError(fmt.Sprintf("%T write field 2 end error: ", p), err)
 }
 
+func (p *MessageChatRequest) writeField3(oprot thrift.TProtocol) (err error) {
+	if err = oprot.WriteFieldBegin("pre_msg_time", thrift.I64, 3); err != nil {
+		goto WriteFieldBeginError
+	}
+	if err := oprot.WriteI64(p.PreMsgTime); err != nil {
+		return err
+	}
+	if err = oprot.WriteFieldEnd(); err != nil {
+		goto WriteFieldEndError
+	}
+	return nil
+WriteFieldBeginError:
+	return thrift.PrependError(fmt.Sprintf("%T write field 3 begin error: ", p), err)
+WriteFieldEndError:
+	return thrift.PrependError(fmt.Sprintf("%T write field 3 end error: ", p), err)
+}
+
 func (p *MessageChatRequest) String() string {
 	if p == nil {
 		return "<nil>"
@@ -214,6 +263,9 @@ func (p *MessageChatRequest) DeepEqual(ano *MessageChatRequest) bool {
 	if !p.Field2DeepEqual(ano.ToUserId) {
 		return false
 	}
+	if !p.Field3DeepEqual(ano.PreMsgTime) {
+		return false
+	}
 	return true
 }
 
@@ -231,11 +283,18 @@ func (p *MessageChatRequest) Field2DeepEqual(src int64) bool {
 	}
 	return true
 }
+func (p *MessageChatRequest) Field3DeepEqual(src int64) bool {
+
+	if p.PreMsgTime != src {
+		return false
+	}
+	return true
+}
 
 type MessageChatResponse struct {
-	StatusCode int32      `thrift:"status_code,1" frugal:"1,default,i32" json:"status_code"`
-	StatusMsg  *string    `thrift:"status_msg,2,optional" frugal:"2,optional,string" json:"status_msg,omitempty"`
-	VideoList  []*Message `thrift:"video_list,3" frugal:"3,default,list<Message>" json:"video_list"`
+	StatusCode  int32      `thrift:"status_code,1" frugal:"1,default,i32" json:"status_code"`
+	StatusMsg   *string    `thrift:"status_msg,2,optional" frugal:"2,optional,string" json:"status_msg,omitempty"`
+	MessageList []*Message `thrift:"message_list,3" frugal:"3,default,list<Message>" json:"message_list"`
 }
 
 func NewMessageChatResponse() *MessageChatResponse {
@@ -259,8 +318,8 @@ func (p *MessageChatResponse) GetStatusMsg() (v string) {
 	return *p.StatusMsg
 }
 
-func (p *MessageChatResponse) GetVideoList() (v []*Message) {
-	return p.VideoList
+func (p *MessageChatResponse) GetMessageList() (v []*Message) {
+	return p.MessageList
 }
 func (p *MessageChatResponse) SetStatusCode(val int32) {
 	p.StatusCode = val
@@ -268,14 +327,14 @@ func (p *MessageChatResponse) SetStatusCode(val int32) {
 func (p *MessageChatResponse) SetStatusMsg(val *string) {
 	p.StatusMsg = val
 }
-func (p *MessageChatResponse) SetVideoList(val []*Message) {
-	p.VideoList = val
+func (p *MessageChatResponse) SetMessageList(val []*Message) {
+	p.MessageList = val
 }
 
 var fieldIDToName_MessageChatResponse = map[int16]string{
 	1: "status_code",
 	2: "status_msg",
-	3: "video_list",
+	3: "message_list",
 }
 
 func (p *MessageChatResponse) IsSetStatusMsg() bool {
@@ -384,14 +443,14 @@ func (p *MessageChatResponse) ReadField3(iprot thrift.TProtocol) error {
 	if err != nil {
 		return err
 	}
-	p.VideoList = make([]*Message, 0, size)
+	p.MessageList = make([]*Message, 0, size)
 	for i := 0; i < size; i++ {
 		_elem := NewMessage()
 		if err := _elem.Read(iprot); err != nil {
 			return err
 		}
 
-		p.VideoList = append(p.VideoList, _elem)
+		p.MessageList = append(p.MessageList, _elem)
 	}
 	if err := iprot.ReadListEnd(); err != nil {
 		return err
@@ -473,13 +532,13 @@ WriteFieldEndError:
 }
 
 func (p *MessageChatResponse) writeField3(oprot thrift.TProtocol) (err error) {
-	if err = oprot.WriteFieldBegin("video_list", thrift.LIST, 3); err != nil {
+	if err = oprot.WriteFieldBegin("message_list", thrift.LIST, 3); err != nil {
 		goto WriteFieldBeginError
 	}
-	if err := oprot.WriteListBegin(thrift.STRUCT, len(p.VideoList)); err != nil {
+	if err := oprot.WriteListBegin(thrift.STRUCT, len(p.MessageList)); err != nil {
 		return err
 	}
-	for _, v := range p.VideoList {
+	for _, v := range p.MessageList {
 		if err := v.Write(oprot); err != nil {
 			return err
 		}
@@ -516,7 +575,7 @@ func (p *MessageChatResponse) DeepEqual(ano *MessageChatResponse) bool {
 	if !p.Field2DeepEqual(ano.StatusMsg) {
 		return false
 	}
-	if !p.Field3DeepEqual(ano.VideoList) {
+	if !p.Field3DeepEqual(ano.MessageList) {
 		return false
 	}
 	return true
@@ -543,10 +602,10 @@ func (p *MessageChatResponse) Field2DeepEqual(src *string) bool {
 }
 func (p *MessageChatResponse) Field3DeepEqual(src []*Message) bool {
 
-	if len(p.VideoList) != len(src) {
+	if len(p.MessageList) != len(src) {
 		return false
 	}
-	for i, v := range p.VideoList {
+	for i, v := range p.MessageList {
 		_src := src[i]
 		if !v.DeepEqual(_src) {
 			return false

@@ -20,15 +20,6 @@ func (MessageRaw) TableName() string {
 	return constants.MessageTableName
 }
 
-func GetMessage(ctx context.Context, myID int64, toID int64, t *int64) (res []*MessageRaw, err error) {
-	curTime := time.Unix(*t, 0)
-	conn := DB.WithContext(ctx).Where("created_at <= ?", curTime).Find(&res)
-	if err = conn.Error; err != nil {
-		return res, err
-	}
-	return res, nil
-}
-
 func PostMessage(ctx context.Context, message MessageRaw) (err error) {
 	err = DB.WithContext(ctx).Table("message").Create(&message).Error
 	if err != nil {
@@ -36,4 +27,14 @@ func PostMessage(ctx context.Context, message MessageRaw) (err error) {
 		return err
 	}
 	return nil
+}
+
+func QueryMessageById(ctx context.Context, userId int64, toUserId int64) ([]*MessageRaw, error) {
+	var messages []*MessageRaw
+	err := DB.WithContext(ctx).Table("message").Where("from_user_id = ? and to_user_id = ?) or (to_user_id = ? and from_user_id = ?", userId, toUserId, userId, toUserId).Find(&messages).Error
+	if err != nil {
+		klog.Error("query message by id fail " + err.Error())
+		return nil, err
+	}
+	return messages, nil
 }

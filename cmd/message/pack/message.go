@@ -14,3 +14,18 @@ func Chat(messageRaw *db.MessageRaw) message.Message {
 	}
 	return message_
 }
+
+func MessageList(messages []*db.MessageRaw) []*message.Message {
+	messageList := make([]*message.Message, 0)
+	var timeLayoutStr = "2006-01-02 15:04:05"
+	for _, message_ := range messages {
+		messageList = append(messageList, &message.Message{
+			Id:         int64(message_.ID),
+			ToUserId:   message_.ToUserID,
+			FromUserId: message_.FromUserID,
+			Content:    message_.Content,
+			CreateTime: message_.CreateTime.Format(timeLayoutStr),
+		})
+	}
+	return messageList
+}

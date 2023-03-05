@@ -30,6 +30,22 @@ type UserInfoResponse struct {
 	User       interface{} `json:"user"`
 }
 
+type MessageInfoResponse struct {
+	StatusCode int32       `json:"status_code"`
+	StatusMsg  string      `json:"status_msg"`
+	MessageList	interface{} `json:"message_list"`
+}
+
+func SendChatResponse(c *gin.Context, messages interface{}, err error) {
+	Err := errno.ConvertErr(err)
+	c.JSON(http.StatusOK, MessageInfoResponse{
+		StatusCode: Err.ErrCode,
+		StatusMsg: Err.ErrMsg,
+		MessageList: messages,
+	})
+}
+
+
 func SendResponse(c *gin.Context, err error) {
 	Err := errno.ConvertErr(err)
 	c.JSON(http.StatusOK, Response{
@@ -143,7 +159,6 @@ type FavoriteListResponse struct {
 	VideoList  interface{} `json:"video_list,omitempty"`
 }
 
-// SendFavoriteListResponse pack favorite list response
 func SendFavoriteListResponse(c *gin.Context, err error, videoList interface{}) {
 	Err := errno.ConvertErr(err)
 	c.JSON(http.StatusOK, FavoriteListResponse{

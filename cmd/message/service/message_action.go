@@ -25,7 +25,7 @@ func (s *MessageActionService) MessageAction(req *message.MessageActionRequest) 
 	if err != nil {
 		return nil, err
 	}
-	if req.ActionType == constants.SendMessage {
+	if req.ActionType == 1 {
 		req, err := SendMessage(currentId, req, s.ctx)
 		if err != nil {
 			return nil, err

@@ -24,7 +24,7 @@ func MessageActionResp(err errno.ErrNo) *message.MessageActionResponse {
 	return &message.MessageActionResponse{StatusCode: err.ErrCode, StatusMsg: &err.ErrMsg}
 }
 
-func BuildMessageChatRep(err error) *message.MessageChatResponse {
+func BuildMessageChatResp(err error) *message.MessageChatResponse {
 	if err == nil {
 		return messageChatResp(errno.Success)
 	}
